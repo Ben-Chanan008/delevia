@@ -1,0 +1,12 @@
+@import "fonts";
+
+body{
+    font-family: "Poppins Regular", sans-serif;
+}
+
+.form-control{
+    box-shadow: none !important;
+    &:focus{
+        border-color: #FF5800 !important;
+    }
+}
