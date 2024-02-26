@@ -10,3 +10,17 @@ body{
         border-color: #FF5800 !important;
     }
 }
+
+.step-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .step{
+        &.active{
+            flex-shrink: 0 !important;
+            width: 100%;
+            display: block;
+        }
+        display: none;
+    }
+}
