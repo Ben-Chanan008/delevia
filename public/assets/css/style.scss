@@ -1,0 +1,52 @@
+:root{
+    --bs-primary-rgb: rgb(255, 88, 0, 100%);
+}
+
+@font-face {
+    src: url("../fonts/Poppins/Poppins-Regular.ttf");
+    font-family: 'Poppins';
+}
+
+body{
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.form-control {
+    box-shadow: none !important;
+    outline: 0 !important;
+    //border: 1px solid #000;
+}
+
+.bg-primary{
+    background-color: var(--bs-primary-rgb) !important;
+}
+
+.step-container{
+    display: flex;
+    overflow: hidden;
+
+    .btn{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .btn-left{
+        position: absolute;
+        right: 40px;
+        top: 0;
+    }
+
+    .step{
+        flex-shrink: 0 !important ;
+        margin: 0 24px 0 0;
+        display: none;
+        &.active{
+            display: block;
+        }
+    }
+}
+
+.error{
+    border: 1px solid #ff0000;
+}
