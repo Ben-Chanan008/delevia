@@ -18,6 +18,7 @@ Route::controller(UserController::class)->group(function () {
     Route::prefix('user')->group(function () {
         Route::post('store','store');
         Route::view('register','user.register');
+        Route::view('login','user.login');
     });
 });
 
