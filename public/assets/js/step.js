@@ -1,4 +1,4 @@
-class Step {
+class Step{
 
     selectedForm;
     stepCount;
@@ -17,8 +17,9 @@ class Step {
         this.currentStep = 0;
         this.errorBag = {};
         this.inputs = [...this.selectedForm.querySelectorAll('.step input')];
-
         this.init();
+
+        // callMsg({mode: 'light', msg: 'data.message', duration: 9000000, type: 'success'});
 
         this.nextBtn = document.createElement('button');
         this.nextBtn.innerHTML = '<i class="far fa-arrow-right-long"></i>';
@@ -75,7 +76,6 @@ class Step {
                                 {transform: 'translateX(0%)'}
                             ], {duration: 500, iterations: 1});
                         }
-
                     });
                 }
 
@@ -240,6 +240,7 @@ class Step {
     }
     handleSubmit(form){
         let formData = new FormData(form),
+            returnType,
             token = document.querySelector('meta[token]').getAttribute('token');
 
         formData.append('_token', token);
@@ -247,10 +248,17 @@ class Step {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
-            console.log(data)
+            const message = new MessageAlerts('.msg-alerts');
+
+            message.init({
+                type: data.type,
+                msg: data.message,
+                mode: 'dark',
+                duration: 5000
+            });
         });
 
     }
 }
 
-const step = new Step('#register-form', ['btn']);
+

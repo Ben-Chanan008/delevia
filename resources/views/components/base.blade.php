@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome/css/all.css')}}" />
 
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
-    <link rel="stylesheet" href="{{asset('assets/css/animation.css')}}" />
+    <link rel="stylesheet" href="{{asset('assets/plugins/message-alert/src/css/style.css')}}" />
 
     <script defer src="{{asset('assets/js/user/main.js')}}"></script>
     <script defer src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.js')}}"></script>
-    <script defer src="{{asset('assets/plugins/fontawesome/js/all.js')}}"></script>
+{{--    <script defer src="{{asset('assets/plugins/fontawesome/js/all.js')}}"></script>--}}
 </head>
 <body>
     {{$slot}}
