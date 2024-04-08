@@ -25,6 +25,6 @@
     <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
     <script src="{{asset('assets/js/step.js')}}"></script>
     <script>
-        const step = new Step('#login-form', ['btn', 'p-3']);
+        const step = new Step('#login-form', ['btn', 'p-3'], 'user/login', 'login');
     </script>
 </x-base>

@@ -22,4 +22,26 @@ class UserController extends Controller
         else
             return response(['message' => 'An Error Occurred!! Please wait', 'type' => 'error'], 442);
     }
+
+    public function login(Request $request)
+    {
+        $fields = $request->validate([
+            'email' => ['email', 'required'],
+            'password' => 'required|max:8'
+        ]);
+
+
+
+    }
+    public function login_check(Request $request)
+    {
+        $email = $request->all()['email'];
+
+        $user_found = User::where(['email' => $email])->first();
+
+        if($user_found === null)
+            return response(['checked' => false], 442);
+        else
+            return response(['checked' => true], 200);
+    }
 }

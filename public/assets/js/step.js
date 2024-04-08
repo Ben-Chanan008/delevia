@@ -10,12 +10,14 @@ class Step{
     errorBag
     host = 'http://localhost:8000';
     submitBtn;
-    constructor(form, btnClasses) {
+    constructor(form, btnClasses, action, type) {
         this.selectedForm = document.querySelector(`${form}`);
         this.steps = [...this.selectedForm.querySelectorAll('.step')];
         this.stepCount = this.steps.length
         this.currentStep = 0;
         this.errorBag = {};
+        this.action = action;
+        this.type = type;
         this.inputs = [...this.selectedForm.querySelectorAll('.step input')];
         this.init();
 
@@ -38,17 +40,20 @@ class Step{
         this.nextBtn.addEventListener('click', e => {
             e.preventDefault();
 
-            if(this.moveNextStep()){
-                this.inputs[this.currentStep].classList.remove('error');
 
-                this.init();
-                this.animateMove([
-                    {transform: 'translateX(100%)'},
-                    {transform: 'translateX(0%)'}
-                ], {duration: 500, iterations: 1});
-            } else{
-                this.inputs[this.currentStep].classList.add('error');
-            }
+                this.inputs[this.currentStep].classList.remove('error');
+                this.moveNextStep().then(result => {
+                    if(result){
+                        this.init();
+                        this.animateMove([
+                            {transform: 'translateX(100%)'},
+                            {transform: 'translateX(0%)'}
+                        ], {duration: 500, iterations: 1});
+                    } else{
+                        console.log('User Not Found!!!');
+                    }
+                });
+
 
             if(this.localCurrentStep > 0){
                 this.prevBtn = document.createElement('button');
@@ -90,13 +95,41 @@ class Step{
     }
 
     moveNextStep() {
-        let activeStep = localStorage.getItem('current-step');
+        return new Promise((resolve, reject) => {
+            let activeStep = localStorage.getItem('current-step');
 
-         if(this.validateSingle(this.steps[activeStep])){
-            this.currentStep += 1;
-            return true;
-         } else
-             return false;
+             if(this.validateSingle(this.steps[activeStep])){
+                this.currentStep += 1;
+                if(this.type === 'login'){
+                    let input = this.inputs[activeStep],
+                        token = document.querySelector('meta[token]').getAttribute('token'),
+                        formData = {
+                        email: input.value,
+                        _token: token
+                    }
+
+                    fetch(`${this.host}/${this.action}/check`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(formData)
+                    }).then(res => res.json()).then(data => {
+                        console.log(data);
+                        if(data.checked){
+                            resolve(true);
+                        } else{
+                            resolve(false);
+                        }
+                    }).catch(error => {
+                        reject(error);
+                    });
+                } else{
+                    resolve(true);
+                }
+             } else
+                 resolve(false);
+        });
     }
 
     movePrevStep() {
@@ -240,11 +273,10 @@ class Step{
     }
     handleSubmit(form){
         let formData = new FormData(form),
-            returnType,
             token = document.querySelector('meta[token]').getAttribute('token');
 
         formData.append('_token', token);
-        fetch(`${this.host}/user/store`, {
+        fetch(`${this.host}/${this.action}`, {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
