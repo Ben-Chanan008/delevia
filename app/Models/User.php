@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\RoleUser;
 use App\Models\Roles;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_key'
     ];
 
     /**
@@ -52,8 +54,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Roles::class)->using(RoleUser::class);
     }
 
-    public function user_access(): HasMany
+    public function user_acesses(): HasMany
     {
-        return $this::hasMany(UserAccess::class);
+        return $this->hasMany(UserAccess::class);
     }
 }

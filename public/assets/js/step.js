@@ -21,8 +21,6 @@ class Step{
         this.inputs = [...this.selectedForm.querySelectorAll('.step input')];
         this.init();
 
-        // callMsg({mode: 'light', msg: 'data.message', duration: 9000000, type: 'success'});
-
         this.nextBtn = document.createElement('button');
         this.nextBtn.innerHTML = '<i class="far fa-arrow-right-long"></i>';
         this.nextBtn.classList.add('border-0');
@@ -40,20 +38,13 @@ class Step{
         this.nextBtn.addEventListener('click', e => {
             e.preventDefault();
 
-
-                this.inputs[this.currentStep].classList.remove('error');
-                this.moveNextStep().then(result => {
-                    if(result){
-                        this.init();
-                        this.animateMove([
-                            {transform: 'translateX(100%)'},
-                            {transform: 'translateX(0%)'}
-                        ], {duration: 500, iterations: 1});
-                    } else{
-                        console.log('User Not Found!!!');
-                    }
-                });
-
+            if(this.moveNextStep()) {
+                this.init();
+                this.animateMove([
+                    {transform: 'translateX(100%)'},
+                    {transform: 'translateX(0%)'}
+                ], {duration: 500, iterations: 1});
+            }
 
             if(this.localCurrentStep > 0){
                 this.prevBtn = document.createElement('button');
@@ -65,7 +56,7 @@ class Step{
                 if(!this.prevBtn.hasAttribute('disabled')){
                     this.prevBtn && this.prevBtn.addEventListener('click', (e) => {
                         e.preventDefault();
-                        this.inputs[this.currentStep].classList.remove('error');
+                        this.inputs[this.currentStep] && this.inputs[this.currentStep].classList.remove('error');
 
                         if(parseInt(this.localCurrentStep) === 1)
                             this.prevBtn.setAttribute('disabled', 'true');
@@ -95,42 +86,44 @@ class Step{
     }
 
     moveNextStep() {
-        return new Promise((resolve, reject) => {
-            let activeStep = localStorage.getItem('current-step');
+        let activeStep = localStorage.getItem('current-step');
 
-             if(this.validateSingle(this.steps[activeStep])){
-                this.currentStep += 1;
-                if(this.type === 'login'){
-                    let input = this.inputs[activeStep],
-                        token = document.querySelector('meta[token]').getAttribute('token'),
-                        formData = {
-                        email: input.value,
-                        _token: token
-                    }
+         if(this.validateSingle(this.steps[activeStep])){
+            this.currentStep += 1;
+            return true;
+            /*if(this.type === 'login'){
+                this.checkEmail().then(result => result)
+            } else
+                return true;*/
+         } else
+             return false
+    }
 
-                    fetch(`${this.host}/${this.action}/check`, {
-                        method: 'POST',
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(formData)
-                    }).then(res => res.json()).then(data => {
-                        console.log(data);
-                        if(data.checked){
-                            resolve(true);
-                        } else{
-                            resolve(false);
-                        }
-                    }).catch(error => {
-                        reject(error);
-                    });
-                } else{
-                    resolve(true);
-                }
-             } else
-                 resolve(false);
+/*
+    checkEmail(){
+        let activeStep = localStorage.getItem('current-step'),
+            input = this.inputs[activeStep],
+            returnValue,
+            token = document.querySelector('meta[token]').getAttribute('token'),
+            formData = {
+                email: input.value,
+                _token: token
+            }
+
+        fetch(`${this.host}/${this.action}/check`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData)
+        }).then(res => res.json()).then(data => {
+            console.log(data);
+            returnValue = data.checked
+        }).catch(error => {
+            console.log(error);
         });
     }
+*/
 
     movePrevStep() {
         this.currentStep -= 1;
@@ -206,7 +199,6 @@ class Step{
                     return true;
                 }
             }
-
         }
     }
 
@@ -280,16 +272,20 @@ class Step{
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
-            const message = new MessageAlerts('.msg-alerts');
+            const message = new MessageAlerts('.msg-alerts'), duration = 5000;
 
             message.init({
                 type: data.type,
                 msg: data.message,
-                mode: 'dark',
-                duration: 5000
+                mode: 'light',
+                duration
             });
-        });
 
+            setTimeout(() => {
+                if(data.redirect)
+                    location.href = data.redirect;
+            }, duration)
+        });
     }
 }
 

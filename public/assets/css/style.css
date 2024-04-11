@@ -3,9 +3,9 @@
 
 @font-face {
   src: url("../fonts/Poppins/Poppins-Regular.ttf");
-  font-family: 'Poppins'; }
+  font-family: "Poppins"; }
 body {
-  font-family: 'Poppins', 'sans-serif'; }
+  font-family: "Poppins", "sans-serif"; }
 
 .form-control {
   box-shadow: none !important;
@@ -20,11 +20,17 @@ body {
   .step-container .btn {
     position: absolute;
     right: 50px;
-    top: 50px; }
+    top: 0; }
+    .step-container .btn.login {
+      top: 50px;
+      right: 50px; }
   .step-container .btn-left {
     position: absolute;
     right: 75px;
-    top: 50px; }
+    top: 0; }
+    .step-container .btn-left.login {
+      top: 49px;
+      right: 79px; }
   .step-container .step {
     flex-shrink: 0 !important;
     margin: 0 24px 0 0;

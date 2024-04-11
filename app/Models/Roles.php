@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Roles extends Model
 {
     use HasFactory;
-    public function role_access(): HasMany
+    public function user(): BelongsToMany
     {
-        return $this::hasMany(RolesAccess::class);
+        return $this->belongsToMany(User::class)->using(RoleUser::class);
     }
 
-    public function user_access(): HasMany
+    public function modules(): BelongsToMany
     {
-        return $this::hasMany(UserAccess::class);
+        return $this->belongsToMany(Modules::class);
     }
 }

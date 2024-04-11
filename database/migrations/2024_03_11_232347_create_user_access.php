@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_access', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('role_id')->references('id')->on('roles')->cascadeOnDelete();
+            $table->foreignId('sub_module_id')->references('id')->on('roles')->cascadeOnDelete();
             $table->timestamps();
         });
     }

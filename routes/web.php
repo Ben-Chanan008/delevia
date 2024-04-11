@@ -18,10 +18,10 @@ Route::controller(UserController::class)->group(function () {
     Route::prefix('user')->group(function () {
         Route::post('store','store');
         Route::post('login','login');
-        Route::post('login/check','login_check');
         Route::view('register','user.register');
         Route::view('login','user.login');
     });
 });
 
+Route::get('/permissions', [UserController::class, 'permissions'])->name('permission');
 Route::view('/', 'home')->name('home');

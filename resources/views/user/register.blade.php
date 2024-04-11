@@ -22,6 +22,16 @@
                             <div class="form-group mt-3 step w-100">
                                 <input type="password" class="form-control p-3" name="password" placeholder="Password"/>
                                 <p class="text-danger error-msg"></p>
+                            </div>
+                            <div class="form-group mt-3 step w-100">
+                                <label class="w-100">
+                                    <select name="user_type" class="form-select w-100">
+                                        <option readonly selected>Select User Type</option>
+                                        <option value="Hirer">Hirer</option>
+                                        <option value="Job Seeker">Job Seeker</option>
+                                    </select>
+                                </label>
+                                <p class="text-danger error-msg"></p>
                                 <div class="d-flex justify-content-end">
                                     <button class="border-0 rounded-pill submit-btn bg-primary px-5 py-2 text-white">Done</button>
                                 </div>
@@ -35,6 +45,6 @@
     <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
     <script src="{{asset('assets/js/step.js')}}"></script>
     <script>
-        const step = new Step('#register-form', ['btn'], 'user/register');
+        const step = new Step('#register-form', ['btn'], 'user/store');
     </script>
 </x-base>
