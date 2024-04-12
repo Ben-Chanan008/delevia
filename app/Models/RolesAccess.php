@@ -10,4 +10,5 @@ class RolesAccess extends Model
 {
     use HasFactory;
 
+    protected $table = 'role_access';
 }

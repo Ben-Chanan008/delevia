@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckUserType;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +21,16 @@ Route::controller(UserController::class)->group(function () {
         Route::post('store','store');
         Route::post('login','login');
         Route::view('register','user.register');
-        Route::view('login','user.login');
+        Route::view('login','user.login')->name('login')->middleware('guest');
+    });
+});
+
+Route::controller(JobsController::class)->group(function () {
+    Route::middleware([CheckUserType::class])->group(function () {
+        Route::prefix('jobs')->group(function () {
+            Route::get('/seeker', [JobsController::class, 'seeker'])->name('job-seeker')->middleware('auth');
+            Route::get('/giver', [JobsController::class, 'giver'])->name('job-giver')->middleware('auth');
+        });
     });
 });
 

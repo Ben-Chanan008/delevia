@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Roles extends Model
 {
     use HasFactory;
-    public function user(): BelongsToMany
+    public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class)->using(RoleUser::class);
+        return $this->belongsToMany(User::class, 'role_user')->using(RoleUser::class);
     }
 
     public function modules(): BelongsToMany

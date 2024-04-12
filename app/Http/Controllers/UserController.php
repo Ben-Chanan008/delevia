@@ -13,8 +13,8 @@ class UserController extends Controller
 {
     private static string $alpha_num_chars = 'QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbm';
     private static array $role_ids = [
-        'job-giver' => 3,
-        'job-seeker' => 2
+        'job-giver' => 2,
+        'job-seeker' => 3
     ];
 
     public function store(Request $request)
@@ -26,21 +26,22 @@ class UserController extends Controller
             'user_type' => 'required'
         ]);
 
-        if(strtolower($fields['user_type']) === 'hirer')
-            $fields['user_key'] = $this->rand_keys();
+
 
         if(User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
             'password' => bcrypt($fields['password']),
-            'user_key' => $fields['user_key'],
         ])){
             $user = User::where(['email' => $fields['email']])->get()->first();
-            $user_key = User::where(['email' => $fields['email']])->get(['user_key'])->first();
 
-            if(RoleUser::create([
-                'role_id' => $user_key ? self::$role_ids['job-giver'] : self::$role_ids['job-seeker'],
-                'user_id' => $user->id,
+//            dd($user_key->user_key);
+            if(strtolower($fields['user_type']) === 'hirer')
+                    
+
+                if(RoleUser::create([
+                'roles_id' => $role_id,
+                'user_id' => $user->id
             ])){
                 Auth::login($user);
                 return response(['message' => 'User has been created successfully!! Please wait', 'type' => 'success', 'redirect' => '/'], 200);
@@ -54,19 +55,27 @@ class UserController extends Controller
     {
         $fields = $request->validate([
             'email' => ['email', 'required'],
-            'password' => 'required|max:8'
+            'password' => 'required|min:8'
         ]);
 
         $attempt_user = User::where(['email' => $fields['email']])->get()->first();
 
-        if($attempt_user && Hash::check($fields['password'], $attempt_user->password)){
-            Auth::login($attempt_user);
-            return response(['Sign In successful!! Please Wait'], 200);
-        } else{
-            if(!Hash::check($fields['password'], $attempt_user->password))
-                return response(['message' => 'Sign In failed!! Incorrect Credentials', 'redirect' => '/view-jobs'], 422);
-            if(!$attempt_user)
-                return response(['message' => 'User does not exists'], 422);
+        if(!$attempt_user)
+            return response(['message' => 'User does not exists', 'type' => 'error'], 422);
+        else{
+            if(Hash::check($fields['password'], $attempt_user->password)){
+                Auth::login($attempt_user);
+
+                if($attempt_user->user_key)
+                    $route = '/jobs/giver';
+                else
+                    $route = '/jobs/seeker';
+
+                return response(['message' => 'Sign In successful!! Please Wait', 'redirect' => $route, 'type' => 'success'], 200);
+            } else{
+                if(!Hash::check($fields['password'], $attempt_user->password))
+                    return response(['message' => 'Sign In failed!! Incorrect Credentials'], 422);
+            }
         }
     }
 
