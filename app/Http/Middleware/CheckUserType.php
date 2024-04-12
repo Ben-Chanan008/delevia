@@ -21,14 +21,14 @@ class CheckUserType
         $user_role = $user->roles;
 
 
-        foreach ($user_role as $role){
-            dd(strtolower($role->role));
+        switch ($user_role[])
+//            dd(strtolower(route('job-seeker')));
             if(strtolower($role->role) === 'job giver')
-                return redirect(route('job-giver'));
+                return redirect()->route('job-giver');
             else if(strtolower($role->role) === 'job seeker')
-                return redirect(route('job-seeker'));
+                return redirect()->route('job-seeker');
             else if(strtolower($role->role) === 'admin')
-                return redirect(route('admin'));
+                return redirect()->route('admin');
             else
                 abort(403, 'Unauthorized request');
         }

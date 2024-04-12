@@ -26,8 +26,6 @@ class UserController extends Controller
             'user_type' => 'required'
         ]);
 
-
-
         if(User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
@@ -35,12 +33,8 @@ class UserController extends Controller
         ])){
             $user = User::where(['email' => $fields['email']])->get()->first();
 
-//            dd($user_key->user_key);
-            if(strtolower($fields['user_type']) === 'hirer')
-                    
-
-                if(RoleUser::create([
-                'roles_id' => $role_id,
+            if(RoleUser::create([
+                'roles_id' => strtolower($fields['user_type']) === 'hirer' ? self::$role_ids['job-giver'] : self::$role_ids['job-seeker'],
                 'user_id' => $user->id
             ])){
                 Auth::login($user);

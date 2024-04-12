@@ -13,7 +13,7 @@ class RoleUser extends Pivot
     protected $table = 'role_user';
 
     protected $fillable = [
-        'role_id',
+        'roles_id',
         'user_id'
     ];
 }
