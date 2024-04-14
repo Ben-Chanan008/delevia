@@ -68,7 +68,7 @@ class UserController extends Controller
                 return response(['message' => 'Sign In successful!! Please Wait', 'redirect' => $route, 'type' => 'success'], 200);
             } else{
                 if(!Hash::check($fields['password'], $attempt_user->password))
-                    return response(['message' => 'Sign In failed!! Incorrect Credentials'], 422);
+                    return response(['message' => 'Sign In failed!! Incorrect Credentials', 'type' => 'error'], 422);
             }
         }
     }

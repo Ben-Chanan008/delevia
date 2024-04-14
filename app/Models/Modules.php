@@ -19,6 +19,6 @@ class Modules extends Model
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Roles::class);
+        return $this->belongsToMany(Roles::class, 'role_access')->using(RolesAccess::class);
     }
 }

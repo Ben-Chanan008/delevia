@@ -25,14 +25,14 @@ Route::controller(UserController::class)->group(function () {
     });
 });
 
-//Route::controller(JobsController::class)->group(function () {
-//    Route::middleware([CheckUserType::class])->group(function () {
-//        Route::prefix('jobs')->group(function () {
-            Route::get('/jobs/seeker',[JobsController::class, 'seeker'])->name('job-seeker')->middleware(['auth', CheckUserType::class]);
-//            Route::get('/giver','giver')->name('job-giver')->middleware('auth');
-//        });
-//    });
-//});
+Route::controller(JobsController::class)->group(function () {
+    Route::middleware([CheckUserType::class])->group(function () {
+        Route::prefix('jobs')->group(function () {
+            Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
+            Route::get('/giver','giver')->name('job.giver')->middleware('auth');
+        });
+    });
+});
 
 Route::get('/permissions', [UserController::class, 'permissions'])->name('permission');
 Route::view('/', 'home')->name('home');
