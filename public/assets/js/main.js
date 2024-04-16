@@ -1,7 +1,7 @@
 const owl = document.querySelector('.owl-carousel');
 if(owl)
     $(document).ready(() => {
-        $('.owl-carousel').owlCarousel({
+        $('#owl-one').owlCarousel({
             items: 3,
             autoplay: true,
             autoplayTimeout: 5000,
@@ -22,5 +22,13 @@ if(owl)
               //     items: 1
               // }
             }
+        });
+        $('#owl-two').owlCarousel({
+            items: 1,
+            loop: true,
+            autoPlayTimeout: 5000,
+            autoplay: true,
+            autoplaySpeed: 1500
+
         });
     });

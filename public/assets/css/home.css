@@ -51,4 +51,7 @@
 #news-letter {
   background-color: #f4f4f4; }
 
+#team .team-background {
+  background-image: linear-gradient(to right, #b7b2b2, #111); }
+
 /*# sourceMappingURL=home.css.map */

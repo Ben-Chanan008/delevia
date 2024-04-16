@@ -55,7 +55,7 @@
         <h2 class="text-center site-text-primary fw-bold">TESTIMONIALS</h2>
         <p class="text-center">Don't just take our word for it. Here's what the users think!</p>
             <div class="d-flex overflow-x-hidden">
-                <div class="owl-carousel d-flex justify-content-center">
+                <div class="owl-carousel d-flex justify-content-center" id="owl-one">
                     <div class="testimonials-card mx-3">
                         <div class="testimonial-head mb-3">
                             <div class="testimonial-img shadow">
@@ -116,7 +116,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi beatae debitis doloribus dolorum ducimus eligendi eos esse fugiat ipsa, iste nam, odit officiis quas quis quisquam rem reprehenderit tenetur vel velit. Cumque labore obcaecati officia perferendis sapiente. A aperiam consequuntur dolores dolorum minima. A accusantium aliquam, amet animi architecto beatae commodi delectus dolor dolore dolorem, est, exercitationem harum libero nam nemo nobis non obcaecati quia quidem quo ratione repudiandae sint sunt suscipit unde velit vero! At aut autem beatae, consequatur consequuntur corporis cum dolores ducimus ea, earum eligendi error, ex incidunt minima modi nisi provident quam vel vitae voluptates.</p>
                 </div>
                 <div class="col">
-                    <div class="img-container"></div>
+                    <div class="img-container rounded-5"></div>
                 </div>
             </div>
         </div>
@@ -138,9 +138,62 @@
             </div>
         </div>
     </section>
+    <section id="team" class="mt-5">
+        <h2 class="text-center site-text-primary fw-bold">OUR TEAM</h2>
+        <p class="text-center">Meet our wonderful Delevia team.</p>
+{{--        <div class="owl-carousel">--}}
+{{--            --}}
+{{--        </div>--}}
+        <div class="team-background p-5">
+            <div class="owl-carousel" id="owl-two">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
+                        <i class="far fa-user fa-10x"></i>
+                    </div>
+                    <div class="col-lg-6 text-white">
+                        <h1 class="fw-bold">Samuel Oshinga</h1>
+                        <span>CEO - FRONT END TEAM</span>
+                        <div class="d-flex flex-column w-75">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
+                        <i class="far fa-user fa-10x"></i>
+                    </div>
+                    <div class="col-lg-6 text-white">
+                        <h1 class="fw-bold">Benchanan Idehen</h1>
+                        <span>CEO - FRONT END TEAM</span>
+                        <div class="d-flex flex-column w-75">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
+                        <i class="far fa-user fa-10x"></i>
+                    </div>
+                    <div class="col-lg-6 text-white">
+                        <h1 class="fw-bold">Immanuel Oshinga</h1>
+                        <span>CEO - FRONT END TEAM</span>
+                        <div class="d-flex flex-column w-75">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+
+    </section>
     @push('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-            <script src="{{asset('assets/js/main.js')}}"></script>
+        <script src="{{asset('assets/js/main.js')}}"></script>
     @endpush
 </x-base>
