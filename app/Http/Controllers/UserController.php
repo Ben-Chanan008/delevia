@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Roles;
 use App\Models\RoleUser;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -19,30 +22,54 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $fields = $request->validate([
+        $fields_validation = Validator::make($request->all(), [
             'name' => 'required',
             'email' => [Rule::unique('users', 'email'), 'email', 'required'],
             'password' => 'required',
             'user_type' => 'required'
         ]);
 
-        if(User::create([
-            'name' => $fields['name'],
-            'email' => $fields['email'],
-            'password' => bcrypt($fields['password']),
-        ])){
-            $user = User::where(['email' => $fields['email']])->get()->first();
+        if($fields_validation->fails()){
+            $error_messages = $fields_validation->errors();
+            $email_error_msg = $error_messages->first('email');
 
-            if(RoleUser::create([
-                'roles_id' => strtolower($fields['user_type']) === 'hirer' ? self::$role_ids['job-giver'] : self::$role_ids['job-seeker'],
-                'user_id' => $user->id
-            ])){
-                Auth::login($user);
-                return response(['message' => 'User has been created successfully!! Please wait', 'type' => 'success', 'redirect' => '/'], 200);
-            } else
-                return response(['message' => 'An Error Occurred!! Please wait', 'type' => 'error'], 422);
+            return response(['message' => $email_error_msg, 'type' => 'error'], 422);
         } else
-            return response(['message' => 'An Error Occurred!! Please wait', 'type' => 'error'], 422);
+            $fields = $fields_validation->validated();
+
+        if(strtolower($fields['user_type']) === 'hirer')
+            $fields['user_key'] = $this::rand_keys();
+        else
+            $fields['user_key'] = null;
+
+        try{
+            if(User::create([
+                'name' => $fields['name'],
+                'email' => $fields['email'],
+                'password' => bcrypt($fields['password']),
+                'user_key' => $fields['user_key']
+            ])){
+                $user = User::where(['email' => $fields['email']])->get()->first();
+
+                if(RoleUser::create([
+                    'roles_id' => strtolower($fields['user_type']) === 'hirer' ? self::$role_ids['job-giver'] : self::$role_ids['job-seeker'],
+                    'user_id' => $user->id
+                ])){
+                    Auth::login($user);
+
+                    if($user->user_key)
+                        $route = '/jobs/giver';
+                    else
+                        $route = '/jobs/seeker';
+
+                    return response(['message' => 'User has been created successfully!! Please wait', 'type' => 'success', 'redirect' => $route], 200);
+                } else
+                    return response(['message' => 'An Error Occurred!! Our Developers are being notified!', 'type' => 'error'], 500);
+            } else
+                return response(['message' => 'An Error Occurred!! Our Developers are being notified!', 'type' => 'error'], 500);
+        } catch (QueryException|\Exception $e){
+            return response(['message' => 'An Error Occurred!! Our Developers are being notified!', 'type' => 'error'], 500);
+        }
     }
 
     public function login(Request $request)
@@ -55,7 +82,7 @@ class UserController extends Controller
         $attempt_user = User::where(['email' => $fields['email']])->get()->first();
 
         if(!$attempt_user)
-            return response(['message' => 'User does not exists', 'type' => 'error'], 422);
+            return response(['message' => 'User does not exist', 'type' => 'error'], 422);
         else{
             if(Hash::check($fields['password'], $attempt_user->password)){
                 Auth::login($attempt_user);

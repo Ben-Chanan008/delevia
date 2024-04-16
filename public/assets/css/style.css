@@ -11,8 +11,11 @@ body {
   box-shadow: none !important;
   outline: 0 !important; }
 
-.bg-primary {
+.site-primary {
   background-color: var(--bs-primary-rgb) !important; }
+
+.site-text-primary {
+  color: var(--bs-primary-rgb) !important; }
 
 .step-container {
   display: flex;
@@ -43,5 +46,10 @@ body {
 
 .w-500 {
   width: 500px !important; }
+
+.btn-scale {
+  transition: transform .1s; }
+  .btn-scale:hover {
+    transform: scale(0.98); }
 
 /*# sourceMappingURL=style.css.map */

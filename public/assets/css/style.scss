@@ -17,8 +17,11 @@ body {
   //border: 1px solid #000;
 }
 
-.bg-primary {
+.site-primary {
   background-color: var(--bs-primary-rgb) !important;
+}
+.site-text-primary {
+  color: var(--bs-primary-rgb) !important;
 }
 
 .step-container {
@@ -61,4 +64,11 @@ body {
 
 .w-500 {
   width: 500px !important;
+}
+
+.btn-scale{
+    transition: transform .1s;
+    &:hover{
+        transform: scale(.98);
+    }
 }
