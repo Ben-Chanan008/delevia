@@ -52,4 +52,12 @@ body {
   .btn-scale:hover {
     transform: scale(0.98); }
 
+.user-icon {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; }
+
 /*# sourceMappingURL=style.css.map */

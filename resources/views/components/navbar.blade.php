@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <nav class="bg-white container-fluid">
     <div class="d-flex justify-content-around p-3 align-items-center">
         <a href="/" class="nav-brand text-black text-decoration-none">
@@ -17,6 +18,19 @@
                 <li class="list-unstyled">Contact</li>
             </a>
         </ul>
-        <a href="{{route('login')}}" class="btn site-primary text-white px-5 py-2 btn-scale">Sign In</a>
+        @if(Auth::check())
+            <div class="d-flex justify-content-center ">
+                <div class="user-icon shadow me-3">
+                    <i class="far fa-user fw-bold px-2"></i>
+                </div>
+                <div>
+                    <span>Hello,</span>
+                    <p class="fw-bold">{{Auth::user()->name}}</p>
+                </div>
+            </div>
+        @endif
+        @unless(Auth::check())
+            <a href="{{route('login')}}" class="btn site-primary text-white px-5 py-2 btn-scale">Sign In</a>
+        @endunless
     </div>
 </nav>

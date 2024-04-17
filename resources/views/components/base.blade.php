@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/plugins/message-alert/src/css/style.css')}}" />
     @stack('styles')
+
+{{--    <link rel="stylesheet" href="{{asset('as')}}">--}}
 </head>
 <body class="overflow-x-hidden vw-100">
     {{$slot}}
