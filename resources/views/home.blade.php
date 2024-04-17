@@ -116,16 +116,19 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi beatae debitis doloribus dolorum ducimus eligendi eos esse fugiat ipsa, iste nam, odit officiis quas quis quisquam rem reprehenderit tenetur vel velit. Cumque labore obcaecati officia perferendis sapiente. A aperiam consequuntur dolores dolorum minima. A accusantium aliquam, amet animi architecto beatae commodi delectus dolor dolore dolorem, est, exercitationem harum libero nam nemo nobis non obcaecati quia quidem quo ratione repudiandae sint sunt suscipit unde velit vero! At aut autem beatae, consequatur consequuntur corporis cum dolores ducimus ea, earum eligendi error, ex incidunt minima modi nisi provident quam vel vitae voluptates.</p>
                 </div>
                 <div class="col">
-                    <div class="img-container rounded-5"></div>
+                    <div class="img-container rounded-5 d-flex justify-content-center align-items-center">
+                        <img src="{{asset('/assets/images/why.png')}}" alt="why-image" width="500px" height="400px" class="rounded-5"/>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="news-letter">
+    <section id="news-letter" class="position-relative">
+{{--        <div class="overlay position-absolute top-0 end-0 start-0 bottom-0"></div>--}}
         <div class="container p-5">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-7">
-                    <p class="h3">Subscribe to Our News Letter</p>
+                    <p class="h3 fw-bold">Subscribe to Our News Letter</p>
                     <p>Get posted on all new jobs in your area.</p>
                 </div>
                 <div class="col-lg-5">
@@ -141,9 +144,6 @@
     <section id="team" class="mt-5">
         <h2 class="text-center site-text-primary fw-bold">OUR TEAM</h2>
         <p class="text-center">Meet our wonderful Delevia team.</p>
-{{--        <div class="owl-carousel">--}}
-{{--            --}}
-{{--        </div>--}}
         <div class="team-background p-5">
             <div class="owl-carousel" id="owl-two">
                 <div class="row d-flex justify-content-center align-items-center">
@@ -276,7 +276,7 @@
                             </div>
                         </div>
                         <div class="mt-3">
-                            <p class="site-text-primary text-center fs-2">Free/<span class="fs-6">month</span></p>
+                            <p class="site-text-primary text-center fs-2">Free</p>
                             <div class="d-flex">
                                 <button class="btn mx-auto btn-primary px-5">Try Now</button>
                             </div>

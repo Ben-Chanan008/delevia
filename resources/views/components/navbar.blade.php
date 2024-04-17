@@ -17,6 +17,6 @@
                 <li class="list-unstyled">Contact</li>
             </a>
         </ul>
-        <button class="btn site-primary text-white px-5 py-2 btn-scale">Sign In</button>
+        <a href="{{route('login')}}" class="btn site-primary text-white px-5 py-2 btn-scale">Sign In</a>
     </div>
 </nav>

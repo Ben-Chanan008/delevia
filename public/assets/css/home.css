@@ -50,6 +50,15 @@
 
 #news-letter {
   background-color: #f4f4f4; }
+  #news-letter .doodle {
+    background-image: url("../images/doodle.webp");
+    backdrop-filter: blur(20px); }
+  #news-letter .overlay {
+    background-color: rgba(220, 9, 9, 0.9);
+    mix-blend-mode: overlay; }
+
+.doodle {
+  background-image: url("../images/doodle.webp"); }
 
 #team .team-background {
   background-image: linear-gradient(to right, #b7b2b2, #111); }

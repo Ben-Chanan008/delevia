@@ -68,9 +68,21 @@
 
 #news-letter{
     background-color: #f4f4f4;
-    .input-group{
-
+    .doodle{
+        background-image: url('../images/doodle.webp');
+        //color: var(--);
+        backdrop-filter: blur(20px);
     }
+
+    .overlay{
+        background-color: rgba(220, 9, 9, 0.9);
+        mix-blend-mode: overlay;
+    }
+}
+
+.doodle{
+    background-image: url('../images/doodle.webp');
+    //color: var(--);
 }
 
 #team{
