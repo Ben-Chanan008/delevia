@@ -34,7 +34,9 @@ Route::controller(JobsController::class)->group(function () {
     });
 });
 
-Route::get('/permissions', [UserController::class, 'permissions'])->name('permission');
+Route::get('permissions', [UserController::class, 'permissions'])->name('permission');
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
 Route::view('/', 'home')->name('home');
 Route::view('about', 'about')->name('about');
 Route::view('services', 'services')->name('services');

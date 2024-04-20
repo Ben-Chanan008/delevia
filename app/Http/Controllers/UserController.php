@@ -112,4 +112,10 @@ class UserController extends Controller
     {
         return view('modules');
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }

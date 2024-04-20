@@ -17,6 +17,11 @@
             <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">Contact</li>
             </a>
+            @if(Auth::check())
+                <a href="{{route('logout')}}" class="px-3 text-decoration-none text-black">
+                    <li class="list-unstyled">Logout</li>
+                </a>
+            @endif
         </ul>
         @if(Auth::check())
             <div class="d-flex justify-content-center ">
