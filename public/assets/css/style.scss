@@ -26,7 +26,7 @@ body {
 
 .step-container {
   display: flex;
-  overflow: hidden;
+  overflow-x: clip;
 
   .btn {
     position: absolute;
@@ -42,10 +42,10 @@ body {
     position: absolute;
     right: 75px;
     top: 0;
-      &.login {
-          top: 49px;
-          right: 79px;
-      }
+    &.login {
+      top: 49px;
+      right: 79px;
+    }
   }
 
   .step {
@@ -66,18 +66,56 @@ body {
   width: 500px !important;
 }
 
-.btn-scale{
-    transition: transform .1s;
-    &:hover{
-        transform: scale(.98);
-    }
+.btn-scale {
+  transition: transform 0.1s;
+  &:hover {
+    transform: scale(0.98);
+  }
 }
 
-.user-icon{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
+.user-icon {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.form-group {
+  position: relative;
+  input {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--bs-primary-rgb) !important;
+    // padding: 0 !important;
+    &:focus,
+    &:not(:placeholder-shown) {
+      border: 2px solid var(--bs-primary-rgb) !important;
+      ~ .floating-label {
+        top: -12px;
+        padding: 0 4px;
+        z-index: 1000;
+        color: var(--bs-primary-rgb);
+        // display: block;
+      }
+    }
+  }
+  .floating-label {
+    transition: all 0.3s;
+    position: absolute;
+    top: 17px;
+    left: 17px;
+    // display: none;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 11px;
+      left: 0;
+      height: 3px;
+      z-index: -1;
+      background-color: #ffffff;
+    }
+  }
 }

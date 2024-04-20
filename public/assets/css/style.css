@@ -19,7 +19,7 @@ body {
 
 .step-container {
   display: flex;
-  overflow: hidden; }
+  overflow-x: clip; }
   .step-container .btn {
     position: absolute;
     right: 50px;
@@ -48,7 +48,7 @@ body {
   width: 500px !important; }
 
 .btn-scale {
-  transition: transform .1s; }
+  transition: transform 0.1s; }
   .btn-scale:hover {
     transform: scale(0.98); }
 
@@ -59,5 +59,33 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 50%; }
+
+.form-group {
+  position: relative; }
+  .form-group input {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid var(--bs-primary-rgb) !important; }
+    .form-group input:focus, .form-group input:not(:placeholder-shown) {
+      border: 2px solid var(--bs-primary-rgb) !important; }
+      .form-group input:focus ~ .floating-label, .form-group input:not(:placeholder-shown) ~ .floating-label {
+        top: -12px;
+        padding: 0 4px;
+        z-index: 1000;
+        color: var(--bs-primary-rgb); }
+  .form-group .floating-label {
+    transition: all 0.3s;
+    position: absolute;
+    top: 17px;
+    left: 17px; }
+    .form-group .floating-label::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 11px;
+      left: 0;
+      height: 3px;
+      z-index: -1;
+      background-color: #ffffff; }
 
 /*# sourceMappingURL=style.css.map */

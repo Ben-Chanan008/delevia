@@ -1,4 +1,4 @@
-class Step{
+class Step {
 
     selectedForm;
     stepCount;
@@ -10,7 +10,7 @@ class Step{
     errorBag
     host = 'http://localhost:8000';
     submitBtn;
-    constructor(form, btnClasses, action, type) {
+    constructor (form, btnClasses, action, type) {
         this.selectedForm = document.querySelector(`${form}`);
         this.steps = [...this.selectedForm.querySelectorAll('.step')];
         this.stepCount = this.steps.length
@@ -38,131 +38,132 @@ class Step{
         this.nextBtn.addEventListener('click', e => {
             e.preventDefault();
 
-            if(this.moveNextStep()) {
+            if (this.moveNextStep()) {
                 this.init();
                 this.animateMove([
-                    {transform: 'translateX(100%)'},
-                    {transform: 'translateX(0%)'}
-                ], {duration: 500, iterations: 1});
+                    { transform: 'translateX(100%)' },
+                    { transform: 'translateX(0%)' }
+                ], { duration: 500, iterations: 1 });
             }
 
-            if(this.localCurrentStep > 0){
+            if (this.localCurrentStep > 0) {
                 this.prevBtn = document.createElement('button');
                 this.prevBtn.innerHTML = '<i class="far fa-arrow-left-long"></i>';
                 this.prevBtn.classList.add('btn-left', 'border-0');
                 this.prevBtn && this.selectedForm.appendChild(this.prevBtn);
                 this.showBtnClasses(btnClasses, this.prevBtn);
 
-                if(!this.prevBtn.hasAttribute('disabled')){
+                if (!this.prevBtn.hasAttribute('disabled')) {
                     this.prevBtn && this.prevBtn.addEventListener('click', (e) => {
                         e.preventDefault();
                         this.inputs[this.currentStep] && this.inputs[this.currentStep].classList.remove('error');
 
-                        if(parseInt(this.localCurrentStep) === 1)
+                        if (parseInt(this.localCurrentStep) === 1)
                             this.prevBtn.setAttribute('disabled', 'true');
-                        else{
+                        else {
                             this.prevBtn.hasAttribute('disabled') && this.prevBtn.removeAttribute('disabled');
                             this.nextBtn.hasAttribute('disabled') && this.nextBtn.removeAttribute('disabled');
                         }
 
-                        if(this.movePrevStep()){
+                        if (this.movePrevStep()) {
                             this.init();
                             this.animateMove([
-                                {transform: 'translateX(100%)'},
-                                {transform: 'translateX(0%)'}
-                            ], {duration: 500, iterations: 1});
+                                { transform: 'translateX(100%)' },
+                                { transform: 'translateX(0%)' }
+                            ], { duration: 500, iterations: 1 });
                         }
                     });
                 }
 
-                if(parseInt(this.localCurrentStep) === this.stepCount - 1)
-                    this.nextBtn.setAttribute('disabled', 'true');
+                // if(parseInt(this.localCurrentStep) === this.stepCount - 1)
+                //     this.nextBtn.setAttribute('disabled', 'true');
             }
         });
     }
 
-    get localCurrentStep() {
+    get localCurrentStep () {
         return localStorage.getItem('current-step');
     }
 
-    moveNextStep() {
+    moveNextStep () {
         let activeStep = localStorage.getItem('current-step');
 
-         if(this.validateSingle(this.steps[activeStep])){
+        if (this.validateSingle(this.steps[activeStep])) {
+            console.log(this.validateSingle(this.steps[activeStep]));
             this.currentStep += 1;
             return true;
             /*if(this.type === 'login'){
                 this.checkEmail().then(result => result)
             } else
                 return true;*/
-         } else
-             return false
+        } else
+            return false
     }
 
-/*
-    checkEmail(){
-        let activeStep = localStorage.getItem('current-step'),
-            input = this.inputs[activeStep],
-            returnValue,
-            token = document.querySelector('meta[token]').getAttribute('token'),
-            formData = {
-                email: input.value,
-                _token: token
-            }
+    /*
+        checkEmail(){
+            let activeStep = localStorage.getItem('current-step'),
+                input = this.inputs[activeStep],
+                returnValue,
+                token = document.querySelector('meta[token]').getAttribute('token'),
+                formData = {
+                    email: input.value,
+                    _token: token
+                }
 
-        fetch(`${this.host}/${this.action}/check`, {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData)
-        }).then(res => res.json()).then(data => {
-            console.log(data);
-            returnValue = data.checked
-        }).catch(error => {
-            console.log(error);
-        });
-    }
-*/
+            fetch(`${this.host}/${this.action}/check`, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
+            }).then(res => res.json()).then(data => {
+                console.log(data);
+                returnValue = data.checked
+            }).catch(error => {
+                console.log(error);
+            });
+        }
+    */
 
-    movePrevStep() {
+    movePrevStep () {
         this.currentStep -= 1;
         return true;
     }
 
-    get nextStep(){
-        if(this.currentStep > this.stepCount)
+    get nextStep () {
+        if (this.currentStep > this.stepCount)
             this.currentStep = this.stepCount;
 
         return this.currentStep + 1;
     }
 
-    get prevStep(){
+    get prevStep () {
         return this.currentStep - 1;
     }
 
-    storeSteps() {
+    storeSteps () {
         localStorage.setItem('current-step', `${this.currentStep}`);
         localStorage.setItem('next-step', `${this.nextStep}`);
         localStorage.setItem('prev-step', `${this.prevStep}`);
     }
 
-    init(){
+    init () {
         let activeStep = this.steps.filter((step, idx) => idx === this.currentStep);
         let inActiveStep = this.steps.filter((step, idx) => idx !== this.currentStep);
 
         activeStep[0].classList.add('active');
 
         this.animateMove([
-            {transform: 'translateX(100%)'},
-            {transform: 'translateX(0%)'}
-        ], {duration: 500, iterations: 1});
+            { transform: 'translateX(100%)' },
+            { transform: 'translateX(0%)' }
+        ], { duration: 500, iterations: 1 });
 
         inActiveStep.forEach(step => step.classList.remove('active'));
         this.storeSteps();
     }
 
-    animateMove(config, timings){
+    animateMove (config, timings) {
         const activeStep = document.querySelector('.step.active');
 
         activeStep.animate(config, timings).finished.then(() => {
@@ -172,34 +173,34 @@ class Step{
         })
     }
 
-    hyphenate(str){
+    hyphenate (str) {
         return str.replace(/[A-Z]/g, match => '-' + match.toLowerCase());
     }
 
-    validateSingle(activeStep) {
+    validateSingle (activeStep) {
         let input = activeStep.querySelector('input'),
-            msg = input.nextElementSibling,
+            msg = activeStep.querySelector('p.error-msg'),
             label = input.getAttribute('placeholder'),
             formError;
 
-        for (const options of this.validationOptions){
-            if(!options.isValid(input) && input.getAttribute('placeholder').toLowerCase() === options.attribute){
+        // console.log(input);
+        this.validationOptions.forEach(options => {
+            if (!options.isValid(input) && input.getAttribute('validate').toLowerCase() === options.attribute) {
                 msg.innerHTML = options.msg(label);
                 this.errorBag["registerForm"] = {};
 
-                this.errorBag.registerForm = {valid: false};
-                formError = true;
+                this.errorBag.registerForm = { valid: false };
+                formError = false;
 
-                return false;
-            } else{
-                if(options.isValid(input)){
+            } else {
+                if (options.isValid(input)) {
                     msg.innerHTML = '';
-                    this.errorBag.registerForm = {valid: true};
-                    formError = false;
-                    return true;
+                    this.errorBag.registerForm = { valid: true };
+                    formError = true;
                 }
             }
-        }
+        });
+        return formError;
     }
 
     validationOptions = [
@@ -211,7 +212,7 @@ class Step{
         {
             attribute: 'email',
             isValid: input => {
-                let regEx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+                let regEx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
                 return !!input.value.match(regEx);
             },
             msg: label => `${label} is not a valid email-address`
@@ -258,12 +259,12 @@ class Step{
         },
     ];
 
-    showBtnClasses(btnClasses, btn){
+    showBtnClasses (btnClasses, btn) {
         btnClasses && btnClasses.forEach(className => {
             btn && btn.classList.add(className);
         });
     }
-    handleSubmit(form){
+    handleSubmit (form) {
         let formData = new FormData(form),
             token = document.querySelector('meta[token]').getAttribute('token');
 
@@ -282,7 +283,7 @@ class Step{
             });
 
             setTimeout(() => {
-                if(data.redirect)
+                if (data.redirect)
                     location.href = data.redirect;
             }, duration)
         });
