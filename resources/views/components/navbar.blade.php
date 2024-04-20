@@ -5,16 +5,16 @@
             <h3>DELEVIA</h3>
         </a>
         <ul class="list-unstyled d-flex">
-            <a href="/" class="px-3 text-decoration-none text-black">
+            <a href="{{route('home')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">Home</li>
             </a>
-            <a href="/" class="px-3 text-decoration-none text-black">
+            <a href="{{route('about')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">About</li>
             </a>
-            <a href="/" class="px-3 text-decoration-none text-black">
+            <a href="{{route('services')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">Services</li>
             </a>
-            <a href="/" class="px-3 text-decoration-none text-black">
+            <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">Contact</li>
             </a>
         </ul>

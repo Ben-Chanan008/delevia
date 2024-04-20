@@ -88,4 +88,10 @@ body {
       z-index: -1;
       background-color: #ffffff; }
 
+.hero {
+  background-image: url("../images/cool-background.png"); }
+
+#try-delevia {
+  background-color: #f4f4f4; }
+
 /*# sourceMappingURL=style.css.map */

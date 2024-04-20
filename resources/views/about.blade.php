@@ -1,7 +1,4 @@
 <x-base title="About Us">
-    @push('styles')
-        <link rel="stylesheet" href="{{asset('assets/css/about.css')}}">
-    @endpush
     <x-navbar />
     <div class="hero container p-5">
         <div class="d-flex justify-content-center align-items-center">
