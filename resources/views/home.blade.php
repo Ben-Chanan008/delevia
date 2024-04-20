@@ -117,7 +117,7 @@
                 </div>
                 <div class="col">
                     <div class="img-container rounded-5 d-flex justify-content-center align-items-center">
-                        <img src="{{asset('/assets/images/why.png')}}" alt="why-image" width="500px" height="400px" class="rounded-5"/>
+                        <img src="{{asset('/assets/images/ask-me.svg')}}" alt="why-image" width="500px" height="400px" class="rounded-5"/>
                     </div>
                 </div>
             </div>

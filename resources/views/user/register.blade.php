@@ -5,22 +5,29 @@
             <div class="card w-100 p-5 border-0 bg-light">
                 <div class="row my-5">
                     <div class="col-lg-6 mb-lg-0 mb-5">
-                        <h1>Delevia - Find Jobs</h1>
+                        <h1 class="fw-bold">Delevia - Find Jobs</h1>
                         <span>Your best suited job is one click away!</span>
+                        <div class="w-100 justify-content-center align-items-center d-flex pt-3">
+                            <img src="{{asset('assets/images/sign-up.svg')}}" alt="find-jobs" height="200px">
+                        </div>
                     </div>
                     <div class="col-lg-6 position-relative">
-                        <p class="fs-2">Sign In</p>
+                        <p class="fs-2 fw-bold">Sign In</p>
+                        <p>Already have an account? <a class="text-decoration-none site-text-primary" href="{{route('login')}}">Login</a></p>
                         <form action="" id="register-form" class="step-container w-100">
                             <div class="form-group mt-3 step w-100">
-                                <input type="text" class="form-control p-3 w-100" name="name" placeholder="Name"/>
+                                <input type="text" class="form-control p-3 w-100" name="name" placeholder="Name" validate="name"/>
+                                <label for="name" class="floating-label">Name</label>
                                 <p class="text-danger error-msg"></p>
                             </div>
                             <div class="form-group mt-3 step w-100">
-                                <input type="email" class="form-control p-3" name="email" placeholder="Email"/>
+                                <input type="email" class="form-control p-3" name="email" placeholder="Email" validate="email"/>
+                                <label for="name" class="floating-label">Email</label>
                                 <p class="text-danger error-msg"></p>
                             </div>
                             <div class="form-group mt-3 step w-100">
-                                <input type="password" class="form-control p-3" name="password" placeholder="Password"/>
+                                <input type="password" class="form-control p-3" name="password" placeholder="Password" validate="password"/>
+                                <label for="name" class="floating-label">Password</label>
                                 <p class="text-danger error-msg"></p>
                             </div>
                             <div class="form-group mt-3 step w-100">
@@ -33,7 +40,7 @@
                                 </label>
                                 <p class="text-danger error-msg"></p>
                                 <div class="d-flex justify-content-end">
-                                    <button class="border-0 rounded-pill submit-btn bg-primary px-5 py-2 text-white">Done</button>
+                                    <button class="border-0 rounded-pill submit-btn site-primary px-5 py-2 text-white">Done</button>
                                 </div>
                             </div>
                         </form>

@@ -4,7 +4,7 @@
 		<div class="d-flex flex-column h-100 justify-content-center align-items-center">
 			<div class="card p-5 bg-white shadow border-0 rounded-4">
 				<div>
-					<h1 class="text-center">DELEVIA</h1>
+					<h1 class="text-center fw-bold site-text-primary">Delevia</h1>
 					<p class="fs-4 text-center mb-3">Login</p>
 				</div>
 				<div class="w-500 step-container mb-3">
