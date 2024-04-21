@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{asset('assets/plugins/message-alert/src/css/style.css')}}" />
     @stack('styles')
 
-{{--    <link rel="stylesheet" href="{{asset('as')}}">--}}
+    <link rel="icon" type="image/x-icon" href="{{asset('meta/favicon.ico')}}">
 </head>
 <body class="overflow-x-hidden vw-100">
     {{$slot}}

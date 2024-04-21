@@ -14,7 +14,7 @@ class JobsController extends Controller
 
     public function giver()
     {
-        return view('jobs.seeker.index');
+        return view('jobs.giver.index');
     }
 
 }
