@@ -222,4 +222,5 @@
             </div>
         </div>
     </section>
+    <x-footer />
 </x-base>

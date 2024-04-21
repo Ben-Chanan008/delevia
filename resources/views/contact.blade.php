@@ -35,7 +35,7 @@
                             <input type="email" id="email" name="name" class="p-3 form-control"/>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="phone">Phone Numbers</label>
+                            <label for="phone">Phone Number</label>
                             <input type="tel" id="phone" name="name" class="p-3 form-control"/>
                         </div>
                         <div class="form-group mb-3">
@@ -48,4 +48,5 @@
             </div>
         </div>
     </section>
+    <x-footer />
 </x-base>

@@ -59,9 +59,10 @@
                 <p class="h1 site-text-primary fw-bold">Want To Try Delevia?</p>
                 <p >It's free to sign up.. Sign up now and enjoy Delevia</p>
                 <div class="d-flex">
-                    <button class="mx-auto btn site-primary px-5 text-white py-2">SIGN UP NOW</button>
+                    <a href="{{route('register')}}" class="mx-auto btn site-primary px-5 text-white py-2">SIGN UP NOW</a>
                 </div>
             </div>
         </div>
     </section>
+    <x-footer />
 </x-base>
