@@ -66,8 +66,8 @@
                     <div>
                         <p class="fw-bold">Senior Developer Advocate</p>
                         <div class="d-flex mb-2">
-                            <div class="tag me-2">laravel</div>
-                            <div class="tag me-2">html</div>
+                            <div class="tag me-2">php</div>
+                            <div class="tag me-2">js</div>
                             <div class="tag me-2">css</div>
                         </div>
                         <p class="fw-bold">Acne Corps Ltd.</p>
