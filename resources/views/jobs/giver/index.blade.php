@@ -41,7 +41,7 @@
                         <div class="d-flex mb-2">
                             <div class="tag me-2">laravel</div>
                             <div class="tag me-2">html</div>
-                            <div class="tag me-2">symphony</div>
+                            <div class="tag me-2">css</div>
                         </div>
                         <p class="fw-bold">Acne Corps Ltd.</p>
                         <p class="text-secondary">Posted 20+ days ago</p>
@@ -68,7 +68,7 @@
                         <div class="d-flex mb-2">
                             <div class="tag me-2">laravel</div>
                             <div class="tag me-2">html</div>
-                            <div class="tag me-2">symphony</div>
+                            <div class="tag me-2">css</div>
                         </div>
                         <p class="fw-bold">Acne Corps Ltd.</p>
                         <p class="text-secondary">Posted 20+ days ago</p>
@@ -95,7 +95,7 @@
                         <div class="d-flex mb-2">
                             <div class="tag me-2">laravel</div>
                             <div class="tag me-2">html</div>
-                            <div class="tag me-2">symphony</div>
+                            <div class="tag me-2">css</div>
                         </div>
                         <p class="fw-bold">Acne Corps Ltd.</p>
                         <p class="text-secondary">Posted 20+ days ago</p>
