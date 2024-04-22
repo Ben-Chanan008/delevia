@@ -15,7 +15,8 @@
 							<p class="error-msg text-danger"></p>
 						</div>
 						<div class="mb-3 step form-group w-100">
-							<input type="password" name="password" class="form-control p-3 w-100" placeholder="Password" validate="password" />
+							<input type="password" name="password" class="form-control p-3 w-100 position-relative" placeholder="Password" validate="password" />
+                            <div class="position-absolute eye-opener"><i class="far fa-eye"></i></div>
 							<label class="floating-label">Password</label>
 							<p class="error-msg text-danger"></p>
 							<div class="d-flex justify-content-end">
@@ -24,6 +25,10 @@
 						</div>
 					</form>
 				</div>
+                <div class="d-flex justify-content-between mb-4">
+                    <a href="{{route('forgot.password')}}" class="text-decoration-none site-text-primary">Forgot Password?</a>
+                    <a href="{{route('contact')}}" class="text-decoration-none site-text-primary">Get Help!</a>
+                </div>
 				<div class="w-100">
 					<div class="mb-3 d-flex align-items-center">
 						<i class="far fa-info-circle me-3"></i>

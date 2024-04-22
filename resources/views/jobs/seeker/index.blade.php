@@ -1,1 +1,3 @@
-<?php
+<x-base>
+    <x-navbar />
+</x-base>

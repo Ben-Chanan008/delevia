@@ -1,4 +1,5 @@
 const owl = document.querySelector('.owl-carousel');
+const eyeOpener = document.querySelector('.eye-opener');
 if(owl)
     $(document).ready(() => {
         $('#owl-one').owlCarousel({
@@ -31,4 +32,16 @@ if(owl)
             autoplaySpeed: 1500
 
         });
+    });
+
+if(eyeOpener)
+    eyeOpener.addEventListener('click', (e) => {
+       let passwordField = document.querySelector('input[validate="password"]');
+        if(passwordField.getAttribute('type') === 'password'){
+            passwordField.setAttribute('type', 'text');
+            eyeOpener.innerHTML = '<i class="far fa-eye-slash"></i>';
+        } else{
+            passwordField.setAttribute('type', 'password');
+            eyeOpener.innerHTML = '<i class="far fa-eye"></i>';
+        }
     });

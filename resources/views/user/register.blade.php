@@ -26,8 +26,8 @@
                                 <p class="text-danger error-msg"></p>
                             </div>
                             <div class="form-group mt-3 step w-100">
-                                <input type="password" class="form-control p-3" name="password" placeholder="Password" validate="password"/>
-                                <label for="name" class="floating-label">Password</label>
+                                <input type="password" name="password" class="form-control p-3 position-relative" placeholder="Password" validate="password" />
+                                <div class="position-absolute eye-opener"><i class="far fa-eye"></i></div>
                                 <p class="text-danger error-msg"></p>
                             </div>
                             <div class="form-group mt-3 step w-100">

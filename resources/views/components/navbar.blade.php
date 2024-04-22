@@ -17,20 +17,29 @@
             <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black">
                 <li class="list-unstyled">Contact</li>
             </a>
-            @if(Auth::check())
-                <a href="{{route('logout')}}" class="px-3 text-decoration-none text-black">
-                    <li class="list-unstyled">Logout</li>
-                </a>
-            @endif
         </ul>
         @if(Auth::check())
-            <div class="d-flex justify-content-center ">
-                <div class="user-icon shadow me-3">
-                    <i class="far fa-user fw-bold px-2"></i>
-                </div>
-                <div>
-                    <span>Hello,</span>
-                    <p class="fw-bold">{{Auth::user()->name}}</p>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-flex ">
+                        <div class="user-icon shadow me-3">
+                            <i class="far fa-user fw-bold px-2"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 text-start">Hello,</p>
+                            <p class="fw-bold">{{Auth::user()->name}}</p>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                    <div class="d-flex ms-3 p-2 align-items-center">
+                        <i class="far fa-power-off me-3"></i>
+                        <a href="{{route('logout')}}" class="text-black text-decoration-none">Logout</a>
+                    </div>
+                    <div class="d-flex ms-3 p-2 align-items-center">
+                        <i class="far fa-user me-3"></i>
+                        <a href="{{route('logout')}}" class="text-black text-decoration-none">Profile</a>
+                    </div>
                 </div>
             </div>
         @endif

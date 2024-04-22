@@ -118,4 +118,32 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('login');
     }
+
+    public function forgot_password(Request $request)
+    {
+        $fields_validation = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if($fields_validation->fails()){
+            $error_messages = $fields_validation->errors();
+            $email_error_msg = $error_messages->first('email');
+            $pass_error_msg = $error_messages->first('password');
+
+            $pass_error_msg = $pass_error_msg === '' ? null : $pass_error_msg;
+            $email_error_msg = $email_error_msg === '' ? null : $email_error_msg;
+
+            return response(['type' => 'error', 'message' => $email_error_msg ?? $pass_error_msg], 422);
+        } else
+            $fields = $fields_validation->validated();
+
+        $fields['password'] = bcrypt($fields['password']);
+        $user_attempt = User::where(['email' => $fields['email']])->update(['password' => $fields['password']]);
+
+        if($user_attempt)
+            return response(['type' => 'success', 'message' => 'Password has been Updated', 'redirect' => 'user/login'], 200);
+        else
+            return response(['type' => 'error', 'message' => 'An Error Has Occurred!!'], 500);
+    }
 }

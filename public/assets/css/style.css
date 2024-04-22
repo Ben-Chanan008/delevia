@@ -88,6 +88,25 @@ body {
       z-index: -1;
       background-color: #ffffff; }
 
+.nav-drop {
+  width: 100%;
+  bottom: -121px;
+  background-color: #f4f4f4;
+  color: #000000; }
+  .nav-drop a {
+    color: #000000 !important; }
+
+.eye-opener {
+  right: 17px;
+  top: 17px; }
+  .eye-opener:hover {
+    cursor: pointer; }
+
+.dropdown-toggle::after {
+  display: none !important; }
+.dropdown-toggle.btn:focus {
+  box-shadow: none !important; }
+
 .hero {
   background-image: url("../images/cool-background.png"); }
 

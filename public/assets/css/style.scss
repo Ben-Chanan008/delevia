@@ -120,6 +120,35 @@ body {
   }
 }
 
+.nav-drop{
+    width: 100%;
+    bottom: -121px;
+    background-color: #f4f4f4;
+    a{
+        color: #000000 !important;
+    }
+    color: #000000;
+}
+
+.eye-opener{
+    right: 17px;
+    top: 17px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.dropdown-toggle{
+    &::after{
+        display: none !important;
+    }
+    &.btn{
+        &:focus{
+            box-shadow: none !important;
+        }
+    }
+}
+
 .hero{
     background-image: url("../images/cool-background.png");
 }
