@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserAccess::class);
     }
+
+    public function jobs(): BelongsTo
+    {
+        return $this->belongsTo(Jobs::class);
+    }
 }

@@ -21,7 +21,7 @@
     </div>
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-4 gx-4">
+            <div class="col-lg-4 gx-4 jobs" id="1">
                 <div class="d-flex">
                     <div class="me-2">
                         <div class="p-2 rounded-4 bg-secondary">

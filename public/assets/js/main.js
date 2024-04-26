@@ -1,5 +1,7 @@
 const owl = document.querySelector('.owl-carousel');
 const eyeOpener = document.querySelector('.eye-opener');
+const applicantCard = [...document.querySelectorAll('.jobs')];
+
 if(owl)
     $(document).ready(() => {
         $('#owl-one').owlCarousel({
@@ -44,4 +46,15 @@ if(eyeOpener)
             passwordField.setAttribute('type', 'password');
             eyeOpener.innerHTML = '<i class="far fa-eye"></i>';
         }
+    });
+
+if(applicantCard)
+    applicantCard.forEach(job => {
+        job.addEventListener('click', (e) => {
+            e.preventDefault();
+            let jobId = e.currentTarget.getAttribute('id'),
+                 ROUTE = `http://localhost:8000/jobs/giver/${jobId}/applicants`;
+
+            location.href = ROUTE;
+        });
     });

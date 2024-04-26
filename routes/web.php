@@ -29,7 +29,8 @@ Route::controller(JobsController::class)->group(function () {
     Route::middleware([CheckUserType::class])->group(function () {
         Route::prefix('jobs')->group(function () {
             Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
-            Route::get('/giver','giver')->name('job.giver')->middleware('auth');
+            Route::get('/giver','giver')->name('jobs.giver')->middleware('auth');
+            Route::get('/giver/{job}/applicants', 'job_applicants')->name('jobs.applicants')->middleware('auth');
         });
     });
 });
