@@ -9,6 +9,7 @@ use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckUserType
@@ -32,11 +33,22 @@ class CheckUserType
                 foreach ($sub_module as $sub){
                     $routes = Routes::where(['sub_module_id' => $sub->id])->get();
                     foreach ($routes as $route){
-                        $path = '/' . $request->path();
-                        if($path === $route->route){
+                        $path = config('app.url'). '/' . $request->path();
+                        $parameters = [
+                            'user' => $request->route()->parameter('user') !== null ? Auth::user()->id : null,
+                            'job' => $request->route()->parameter('job') !== null ? 1 : null,
+                        ];
+//                        var_dump(route($route->route, ['user'=> 1, 'job'=> 1]));
+
+                        $routesByName = Route::getRoutes();
+//                        var_dump($routesByName);
+
+                        if($path === route($route->route, ['user'=> 1, 'job'=> 1])){
                             $flag = true;
-                            break;
-                        }
+                            break;}
+//                        } else {
+//                            return $next($request);
+//                        }
                     }
                 }
             }

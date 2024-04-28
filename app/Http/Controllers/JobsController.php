@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jobs;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobsController extends Controller
@@ -18,7 +19,7 @@ class JobsController extends Controller
         return view('jobs.giver.index');
     }
 
-    public function fetch_job(Request $request)
+    /*public function fetch_job(Request $request)
     {
         $values = $request->validate([
             'job_id' => 'required'
@@ -27,6 +28,12 @@ class JobsController extends Controller
         $job = Jobs::where(['id', $values['job_id']])->get()->first();
 
         return $job;
+    }*/
+
+    public function create(Request $request, User $user)
+    {
+//        return view('jobs.giver.create');
+        dd($user);
     }
 
     public function job_applicants(Request $request, Jobs $job)

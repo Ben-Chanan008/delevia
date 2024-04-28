@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <x-base title="Create A Job">
     @push('styles')
         <link rel="stylesheet" href="{{asset('assets/css/jobs/style.css')}}">
@@ -6,7 +7,7 @@
     <div class="hero p-5 mb-5">
         <p class="text-white fs-1 fw-bold text-center">CREATE YOUR NEXT JOB</p>
         <div class="d-flex justify-content-center">
-            <button class="btn site-primary text-white px-5">POST JOB</button>
+            <a href="{{route('jobs.create', ['user' => Auth::user()->id])}}" class="btn site-primary text-decoration-none text-white px-5">POST JOB</a>
         </div>
     </div>
     <div class="container">

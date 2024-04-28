@@ -3,6 +3,7 @@
 use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserType;
+use App\Http\Middleware\JobsAuthentication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function () {
     Route::prefix('user')->group(function () {
-        Route::post('store','store');
-        Route::post('login','login');
+        Route::post('store','store')->name('user.store');
+        Route::post('login','login')->name('user.login');
         Route::view('register','user.register')->name('register');
         Route::view('login','user.login')->name('login')->middleware('guest');
     });
@@ -30,7 +31,12 @@ Route::controller(JobsController::class)->group(function () {
         Route::prefix('jobs')->group(function () {
             Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
             Route::get('/giver','giver')->name('jobs.giver')->middleware('auth');
-            Route::get('/giver/{job}/applicants', 'job_applicants')->name('jobs.applicants')->middleware('auth');
+            Route::middleware([JobsAuthentication::class])->group(function () {
+                Route::get('/giver/{user}/create','create')->name('jobs.create')->middleware('auth');
+                Route::get('/giver/{job}/applicants', 'job_applicants')->name('jobs.applicants')->middleware('auth');
+                Route::get('/giver/{job}/edit', 'job_applicants')->name('jobs.edit')->middleware('auth');
+                Route::get('/giver/{job}/delete', 'job_applicants')->name('jobs.delete')->middleware('auth');
+            });
         });
     });
 });
