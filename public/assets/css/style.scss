@@ -36,6 +36,10 @@ body {
       top: 50px;
       right: 50px;
     }
+    &.post-job {
+      top: 34px;
+      right: 75px;
+    }
   }
 
   .btn-left {
@@ -45,6 +49,10 @@ body {
     &.login {
       top: 49px;
       right: 79px;
+    }
+    &.post-job {
+       top: 33px;
+       right: 100px;
     }
   }
 
@@ -64,6 +72,15 @@ body {
 
 .w-500 {
   width: 500px !important;
+}
+.w-700 {
+  width: 700px !important;
+}
+.w-800 {
+  width: 800px !important;
+}
+.w-900 {
+  width: 900px !important;
 }
 
 .btn-scale {

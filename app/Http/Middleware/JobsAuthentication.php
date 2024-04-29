@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Jobs;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,21 +17,26 @@ class JobsAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->route()->parameter('user')){
+        if ($request->route('user') && !$request->route('job')) {
             $user = Auth::id();
-            $owner = $request->route()->parameter('user');
+            $owner = $request->route('user');
+//            dd($owner);
 
-            if($user === $owner->id)
-//                dd($user);
+            if ($user === $owner->id)
                 return $next($request);
             else
-//                dd($owner->id);
                 abort(403, 'Unauthorized Access');
-        } elseif($request->route()->parameter('job')){
-            $user = Auth::user()->id;
-            $job_id = $request->route()->parameter('job');
+        } elseif ($request->route('job') && !$request->route('user')) {
+            $user = Auth::id();
+            $job_id = $request->route('job');
 
-            if($job_id === $user)
+            if ($job_id->id === $user)
+                return $next($request);
+            else
+                abort(403, 'Unauthorized Access');
+        } elseif($request->route('user') && $request->route('job')){
+            $job_owner_id = $request->route('job')->user_id;
+            if($job_owner_id === Auth::id())
                 return $next($request);
             else
                 abort(403, 'Unauthorized Access');

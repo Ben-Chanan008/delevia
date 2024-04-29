@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Jobs;
 use App\Models\RolesAccess;
 use App\Models\Routes;
 use App\Models\SubModules;
@@ -35,20 +36,31 @@ class CheckUserType
                     foreach ($routes as $route){
                         $path = config('app.url'). '/' . $request->path();
                         $parameters = [
-                            'user' => $request->route()->parameter('user') !== null ? Auth::user()->id : null,
-                            'job' => $request->route()->parameter('job') !== null ? 1 : null,
+                            'user' => str_contains($route->parameter, 'user') ? Auth::user()->id : null,
+                            'job' => str_contains($route->parameter, 'jobs') ? 1 : null,
+                            'both' => str_contains($route->parameter, '|') ? true : null
                         ];
-//                        var_dump(route($route->route, ['user'=> 1, 'job'=> 1]));
+                        $routes = [];
+                        if($route->has_parameter){
+                            if($parameters['both']){
+                                $jobs = Jobs::where(['user_id' => Auth::user()->id])->get();
+                                foreach ($jobs as $job){
+                                    $route_val3 = route($route->route, ['user' => Auth::id(), 'jobs' => $job->id]);
+                                    $routes[] = $route_val3;
+                                }
+                            } else{
+                                $route_val1 = route($route->route, $parameters['both'] ?? ($parameters['user'] ?? $parameters['jobs']));
+                                $routes[] = $route_val1;
+                            }
+                        } else{
+                            $route_val2 = route($route->route);
+                            $routes[] = $route_val2;
+                        }
 
-                        $routesByName = Route::getRoutes();
-//                        var_dump($routesByName);
-
-                        if($path === route($route->route, ['user'=> 1, 'job'=> 1])){
-                            $flag = true;
-                            break;}
-//                        } else {
-//                            return $next($request);
-//                        }
+                        foreach ($routes as $accessed_routes)
+                            if($path === $accessed_routes){
+                                $flag = true;
+                                break;}
                     }
                 }
             }

@@ -16,7 +16,7 @@
 
     <link rel="icon" type="image/x-icon" href="{{asset('meta/favicon.ico')}}">
 </head>
-<body class="overflow-x-hidden vw-100">
+<body {{$attributes->merge(['class' => 'overflow-x-hidden vw-100'])}}>
     {{$slot}}
 
     <script defer src="{{asset('assets/js/main.js')}}"></script>

@@ -32,13 +32,12 @@ class JobsController extends Controller
 
     public function create(Request $request, User $user)
     {
-//        return view('jobs.giver.create');
-        dd($user);
+        return view('jobs.giver.create');
     }
 
-    public function job_applicants(Request $request, Jobs $job)
+    public function job_applicants(Request $request, User $user, Jobs $job)
     {
-        dd($job);
+//        dd($job);
 //        return view('jobs.giver.applicants', ['job_data' => $job]);
     }
 

@@ -27,6 +27,9 @@ body {
     .step-container .btn.login {
       top: 50px;
       right: 50px; }
+    .step-container .btn.post-job {
+      top: 34px;
+      right: 75px; }
   .step-container .btn-left {
     position: absolute;
     right: 75px;
@@ -34,6 +37,9 @@ body {
     .step-container .btn-left.login {
       top: 49px;
       right: 79px; }
+    .step-container .btn-left.post-job {
+      top: 33px;
+      right: 100px; }
   .step-container .step {
     flex-shrink: 0 !important;
     margin: 0 24px 0 0;
@@ -46,6 +52,15 @@ body {
 
 .w-500 {
   width: 500px !important; }
+
+.w-700 {
+  width: 700px !important; }
+
+.w-800 {
+  width: 800px !important; }
+
+.w-900 {
+  width: 900px !important; }
 
 .btn-scale {
   transition: transform 0.1s; }
