@@ -118,6 +118,11 @@ body {
       }
     }
   }
+  select{
+    border: 2px solid var(--bs-primary-rgb) !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
   .floating-label {
     transition: all 0.3s;
     position: absolute;

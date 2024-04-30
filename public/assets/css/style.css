@@ -88,6 +88,10 @@ body {
         padding: 0 4px;
         z-index: 1000;
         color: var(--bs-primary-rgb); }
+  .form-group select {
+    border: 2px solid var(--bs-primary-rgb) !important;
+    box-shadow: none !important;
+    outline: 0 !important; }
   .form-group .floating-label {
     transition: all 0.3s;
     position: absolute;

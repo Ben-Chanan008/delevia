@@ -1,4 +1,4 @@
-<x-base class="vh-100">
+<x-base class="vh-100" title="Create A Job">
     <x-navbar />
     <h1 class="text-center site-text-primary fw-bold mt-3">POST A JOB!</h1>
     <div class="d-flex flex-column h-75 justify-content-center align-items-center">
@@ -23,24 +23,24 @@
                                 </div>
                                 <div class="form-group mb-3 w-100">
                                     <label class="w-100">
-                                        <select name="user_type" class="form-select w-100">
-                                            <option readonly selected>Select Company</option>
-                                            <option value="Hirer">Hirer</option>
-                                            <option value="Job Seeker">Job Seeker</option>
+                                        <select name="user_type" class="form-select w-100" id="user-select">
+                                            <option readonly value="" selected>Select Your Company</option>
+                                            <option value="Hirer">Xcella</option>
+                                            <option value="Job Seeker">Acne Corps Ltd.</option>
                                         </select>
                                     </label>
                                     <p class="text-danger error-msg"></p>
-                            </div>
-                            </div>
-                            <div class="form-group mb-3 w-100">
-                                <input type="text" class="form-control p-3 w-100" name="tags" placeholder="Tags" validate="name"/>
-                                <label for="name" class="floating-label">Tags</label>
-                                <p class="text-danger error-msg"></p>
-                            </div>
-                            <div class="form-group mb-3 w-100">
-                                <input type="date" class="form-control p-3 w-100" name="tags" placeholder="Date of Opening" validate="name"/>
-                                <label for="name" class="floating-label">Date of opening</label>
-                                <p class="text-danger error-msg"></p>
+                                </div>
+                                <div class="form-group mb-3 w-100">
+                                    <input type="text" class="form-control p-3 w-100" name="tags" placeholder="Tags" validate="name"/>
+                                    <label for="name" class="floating-label">Tags</label>
+                                    <p class="text-danger error-msg"></p>
+                                </div>
+                                <div class="form-group mb-3 w-100">
+                                    <input type="date" class="form-control p-3 w-100" name="tags" placeholder="Date of Opening" validate="name"/>
+                                    <label for="name" class="floating-label">Date of opening</label>
+                                    <p class="text-danger error-msg"></p>
+                                </div>
                             </div>
                         </div>
                         <div class="mt-3 step w-100">
@@ -53,11 +53,6 @@
                                 </div>
                             </div>
                         </div>
-{{--                        <div class="d-flex flex-column mt-3 step w-100">--}}
-{{--                            <input type="password" name="password" class="form-control p-3 position-relative" placeholder="Password" validate="password" />--}}
-{{--                            <div class="position-absolute eye-opener"><i class="far fa-eye"></i></div>--}}
-{{--                            <p class="text-danger error-msg"></p>--}}
-{{--                        </div>--}}
                         <div class="form-group mt-3 step w-100">
                             <label class="w-100">
                                 <select name="user_type" class="form-select w-100">
@@ -80,7 +75,7 @@
         <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
         <script src="{{asset('assets/js/step.js')}}"></script>
         <script>
-            const step = new Step('#register-form', ['btn', 'post-job'], 'user/store');
+            const step = new Step('#register-form', ['btn', 'post-job'], 'user/store', true);
         </script>
     @endpush
 </x-base>

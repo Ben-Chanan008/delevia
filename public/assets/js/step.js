@@ -1,5 +1,4 @@
 class Step {
-
     selectedForm;
     stepCount;
     steps;
@@ -10,15 +9,16 @@ class Step {
     errorBag
     host = 'http://localhost:8000';
     submitBtn;
-    constructor (form, btnClasses, action, type) {
+    constructor (form, btnClasses, action, multipleStep = false) {
         this.selectedForm = document.querySelector(`${form}`);
         this.steps = [...this.selectedForm.querySelectorAll('.step')];
         this.stepCount = this.steps.length
         this.currentStep = 0;
         this.errorBag = {};
         this.action = action;
-        this.type = type;
         this.inputs = [...this.selectedForm.querySelectorAll('.step input')];
+        this.multipleStep = multipleStep;
+        console.log(this.multipleStep);
         this.init();
 
         this.nextBtn = document.createElement('button');
@@ -74,9 +74,6 @@ class Step {
                         }
                     });
                 }
-
-                // if(parseInt(this.localCurrentStep) === this.stepCount - 1)
-                //     this.nextBtn.setAttribute('disabled', 'true');
             }
         });
     }
@@ -87,44 +84,23 @@ class Step {
 
     moveNextStep () {
         let activeStep = localStorage.getItem('current-step');
+            // activeStepElement = document.querySelector(`${this.steps[activeStep]}`);
 
-        if (this.validateSingle(this.steps[activeStep])) {
-            console.log(this.validateSingle(this.steps[activeStep]));
-            this.currentStep += 1;
-            return true;
-            /*if(this.type === 'login'){
-                this.checkEmail().then(result => result)
+        if(this.multipleStep){
+            console.log(this.steps[activeStep]);
+            if(this.validateGroup(document.querySelectorAll(`div.step.active .form-group`))){
+              this.currentStep += 1;
+                return true;
             } else
-                return true;*/
+                return false;
         } else
-            return false
+            if (this.validateSingle(this.steps[activeStep])) {
+                console.log(this.validateSingle(this.steps[activeStep]));
+                this.currentStep += 1;
+                return true;
+            } else
+                return false
     }
-
-    /*
-        checkEmail(){
-            let activeStep = localStorage.getItem('current-step'),
-                input = this.inputs[activeStep],
-                returnValue,
-                token = document.querySelector('meta[token]').getAttribute('token'),
-                formData = {
-                    email: input.value,
-                    _token: token
-                }
-
-            fetch(`${this.host}/${this.action}/check`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData)
-            }).then(res => res.json()).then(data => {
-                console.log(data);
-                returnValue = data.checked
-            }).catch(error => {
-                console.log(error);
-            });
-        }
-    */
 
     movePrevStep () {
         this.currentStep -= 1;
@@ -183,7 +159,6 @@ class Step {
             label = input.getAttribute('placeholder'),
             formError;
 
-        // console.log(input);
         this.validationOptions.forEach(options => {
             if (!options.isValid(input) && input.getAttribute('validate').toLowerCase() === options.attribute) {
                 msg.innerHTML = options.msg(label);
@@ -191,7 +166,6 @@ class Step {
 
                 this.errorBag.registerForm = { valid: false };
                 formError = false;
-
             } else {
                 if (options.isValid(input)) {
                     msg.innerHTML = '';
@@ -201,6 +175,46 @@ class Step {
             }
         });
         return formError;
+    }
+
+    validateGroup(activeGroupStep){
+       let  funcValue = false;
+        activeGroupStep.forEach((formGroup) => {
+            let input = formGroup.querySelector('input'),
+                msg = formGroup.querySelector('p.error-msg'),
+                label,
+                formError;
+
+            if(input){
+                label = input.getAttribute('placeholder');
+
+                this.validationOptions.forEach(options => {
+                    if (!options.isValid(input) && input.getAttribute('validate').toLowerCase() === options.attribute) {
+                        msg.innerHTML = options.msg(label);
+                        this.errorBag["registerForm"] = {};
+
+                        this.errorBag.registerForm = { valid: false };
+                        formError = false;
+
+                    } else {
+                        if (options.isValid(input)) {
+                            msg.innerHTML = '';
+                            this.errorBag.registerForm = { valid: true };
+                            formError = true;
+                        }
+                    }
+                });
+                funcValue = formError;
+            } else{
+                const selectInput = document.getElementById('user-select');
+                if(selectInput.value === ''){
+                    funcValue = false;
+                    msg.innerHTML = 'Please choose an option';
+                } else
+                    funcValue = true;
+            }
+        });
+        return funcValue;
     }
 
     validationOptions = [
