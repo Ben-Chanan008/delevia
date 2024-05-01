@@ -14,12 +14,19 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('job');
             $table->string('title');
             $table->string('tags');
-            $table->string('company');
+            $table->foreignId('company_id')->references('id')->on('company')->cascadeOnDelete();
             $table->string('description');
+            $table->string('degree_req');
+            $table->string('experience');
+            $table->string('salary');
+            $table->string('rate');
+            $table->string('currency');
+            $table->string('job_type');
+            $table->string('needed_skills');
             $table->string('location');
+            $table->date('date_of_post');
             $table->timestamps();
         });
     }

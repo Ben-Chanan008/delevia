@@ -87,7 +87,6 @@ class Step {
             // activeStepElement = document.querySelector(`${this.steps[activeStep]}`);
 
         if(this.multipleStep){
-            console.log(this.steps[activeStep]);
             if(this.validateGroup(document.querySelectorAll(`div.step.active .form-group`))){
               this.currentStep += 1;
                 return true;
@@ -186,7 +185,9 @@ class Step {
                 formError;
 
             if(input){
-                label = input.getAttribute('placeholder');
+                label = input.getAttribute('name');
+
+                label = (label.charAt(0).toUpperCase() + label.slice(1));
 
                 this.validationOptions.forEach(options => {
                     if (!options.isValid(input) && input.getAttribute('validate').toLowerCase() === options.attribute) {

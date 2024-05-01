@@ -146,4 +146,12 @@ class UserController extends Controller
         else
             return response(['type' => 'error', 'message' => 'An Error Has Occurred!!'], 500);
     }
+
+    public static function checkUserRole()
+    {
+        $user = User::where(['id' => Auth::id()])->get()->first();
+        $user_role = $user->roles->first()->role;
+
+        return strtolower($user_role) === 'job giver';
+    }
 }

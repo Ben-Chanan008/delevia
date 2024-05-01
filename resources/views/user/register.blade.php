@@ -52,6 +52,6 @@
     <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
     <script src="{{asset('assets/js/step.js')}}"></script>
     <script>
-        const step = new Step('#register-form', ['btn'], 'user/store');
+        const step = new Step('#register-form', ['btn'], 'user/store', false);
     </script>
 </x-base>

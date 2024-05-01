@@ -1,4 +1,4 @@
-@php use Illuminate\Support\Facades\Auth; @endphp
+@php use App\Http\Controllers\UserController;use Illuminate\Support\Facades\Auth; @endphp
 <nav class="bg-white container-fluid">
     <div class="d-flex justify-content-around p-3 align-items-center">
         <a href="/" class="nav-brand text-black text-decoration-none">
@@ -40,6 +40,17 @@
                         <i class="far fa-user me-3"></i>
                         <a href="{{route('logout')}}" class="text-black text-decoration-none">Profile</a>
                     </div>
+                    @if(UserController::checkUserRole())
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-gear me-3"></i>
+                            <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Manage Listings</a>
+                        </div>
+                    @else
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-business-time me-3"></i>
+                            <a href="{{route('jobs.seeker')}}" class="text-black text-decoration-none">View Jobs</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endif

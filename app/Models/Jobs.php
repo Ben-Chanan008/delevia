@@ -14,4 +14,9 @@ class Jobs extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function company(): HasMany
+    {
+        return $this->hasMany(Company::class);
+    }
 }

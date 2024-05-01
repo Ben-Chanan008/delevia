@@ -54,7 +54,7 @@
         <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
         <script src="{{asset('assets/js/step.js')}}"></script>
         <script defer>
-            const step = new Step('#login-form', ['btn', 'p-3', 'login'], 'user/login', 'login');
+            const step = new Step('#login-form', ['btn', 'p-3', 'login'], 'user/login', false);
         </script>
 	@endpush
 </x-base>
