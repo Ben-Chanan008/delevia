@@ -19,4 +19,9 @@ class Jobs extends Model
     {
         return $this->hasMany(Company::class);
     }
+
+    public function currency(): HasMany
+    {
+        return $this->hasMany(Currencies::class);
+    }
 }

@@ -89,8 +89,14 @@
                                     <p class="text-danger error-msg"></p>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control p-3" name="currency" placeholder="Currency" validate="name"/>
-                                    <label for="name" class="floating-label">Currency</label>
+                                    <label class="w-100">
+                                        <select name="currency" class="form-select w-100" id="currency-select">
+                                            <option readonly value="" selected>Select Your Currency</option>
+                                            <option value="">&pound; Pounds</option>
+                                            <option value="">&#8358; Naira</option>
+                                            <option value="">&dollar; U.S dollar</option>
+                                        </select>
+                                    </label>
                                     <p class="text-danger error-msg"></p>
                                 </div>
                                 <div class="d-flex justify-content-end">

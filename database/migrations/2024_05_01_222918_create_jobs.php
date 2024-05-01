@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('experience');
             $table->string('salary');
             $table->string('rate');
-            $table->string('currency');
+            $table->foreignId('currency')->references('id')->on('currencies')->cascadeOnDelete();
             $table->string('job_type');
             $table->string('needed_skills');
             $table->string('location');

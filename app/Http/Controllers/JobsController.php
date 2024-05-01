@@ -60,7 +60,7 @@ class JobsController extends Controller
                 'rate' => $fields['rate'],
                 'job_type' => $fields['job_type'],
                 'needed_skills' => $fields['needed_skills'],
-                'currency' => $fields['currency'],
+                'currency' => $fields['currency']
             ]);
 
             return response(['message' => 'Job created successfully!', 'type' => 'success'], 200);
