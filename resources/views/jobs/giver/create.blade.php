@@ -27,8 +27,20 @@
                                     <label class="w-100">
                                         <select name="company" class="form-select w-100" id="user-select">
                                             <option readonly value="" selected>Select Your Company</option>
-                                            <option value="Hirer">Xcella</option>
-                                            <option value="Job Seeker">Acne Corps Ltd.</option>
+                                            @foreach($company as $industry)
+                                                <option value="{{$industry->company_name}}">{{$industry->company_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                    <p class="text-danger error-msg"></p>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="w-100">
+                                        <select name="currency" class="form-select w-100" id="currency-select">
+                                            <option readonly value="" selected>Select Your Currency</option>
+                                            @foreach($currency as $money)
+                                                <option value="{{$money->currency_name}}">&{{$money->unicode}}; {{$money->currency_name}}</option>
+                                            @endforeach
                                         </select>
                                     </label>
                                     <p class="text-danger error-msg"></p>
@@ -88,17 +100,7 @@
                                     <label for="name" class="floating-label">Rate</label>
                                     <p class="text-danger error-msg"></p>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label class="w-100">
-                                        <select name="currency" class="form-select w-100" id="currency-select">
-                                            <option readonly value="" selected>Select Your Currency</option>
-                                            <option value="">&pound; Pounds</option>
-                                            <option value="">&#8358; Naira</option>
-                                            <option value="">&dollar; U.S dollar</option>
-                                        </select>
-                                    </label>
-                                    <p class="text-danger error-msg"></p>
-                                </div>
+
                                 <div class="d-flex justify-content-end">
                                     <button class="border-0 rounded-pill submit-btn site-primary px-5 py-2 text-white">Post Job</button>
                                 </div>

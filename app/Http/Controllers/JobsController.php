@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
+use App\Models\Currencies;
 use App\Models\Jobs;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -45,6 +47,8 @@ class JobsController extends Controller
         } else
             $fields = $fields_validate->validated();
 
+        $fields['currency'] = Currencies::where(['currency_name' => $fields['currency']])->get()->first()->currency_name;
+
         try{
             User::create([
                 'user_id' => Auth::id(),
@@ -72,7 +76,7 @@ class JobsController extends Controller
 
     public function show_create(User $user)
     {
-        return view('jobs.giver.create');
+        return view('jobs.giver.create', ['company' => Company::where(['user_id' => Auth::id()])->get(), 'currency' => Currencies::all()]);
     }
 
     public function job_applicants(Request $request, User $user, Jobs $job)
