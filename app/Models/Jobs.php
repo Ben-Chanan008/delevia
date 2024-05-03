@@ -10,6 +10,22 @@ class Jobs extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'title',
+        'company_id',
+        'tags',
+        'date_of_post',
+        'location',
+        'description',
+        'experience',
+        'salary',
+        'rate',
+        'job_type',
+        'needed_skills',
+        'currency',
+    ];
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

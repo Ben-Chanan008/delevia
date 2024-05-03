@@ -1,5 +1,6 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
 <x-base class="vh-100" title="Create A Job">
+    <div class="msg-alerts"></div>
     <x-navbar />
     <h1 class="text-center site-text-primary fw-bold mt-3">POST A JOB!</h1>
     <div class="d-flex flex-column h-75 justify-content-center align-items-center">
@@ -29,17 +30,6 @@
                                             <option readonly value="" selected>Select Your Company</option>
                                             @foreach($company as $industry)
                                                 <option value="{{$industry->company_name}}">{{$industry->company_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </label>
-                                    <p class="text-danger error-msg"></p>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="w-100">
-                                        <select name="currency" class="form-select w-100" id="currency-select">
-                                            <option readonly value="" selected>Select Your Currency</option>
-                                            @foreach($currency as $money)
-                                                <option value="{{$money->currency_name}}">&{{$money->unicode}}; {{$money->currency_name}}</option>
                                             @endforeach
                                         </select>
                                     </label>
@@ -100,7 +90,17 @@
                                     <label for="name" class="floating-label">Rate</label>
                                     <p class="text-danger error-msg"></p>
                                 </div>
-
+                                <div class="form-group mb-3">
+                                    <label class="w-100">
+                                        <select name="currency" class="form-select w-100" id="currency-select">
+                                            <option readonly value="" selected>Select Your Currency</option>
+                                            @foreach($currency as $money)
+                                                <option value="{{$money->currency_name}}">&{{$money->unicode}}; {{$money->currency_name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </label>
+                                    <p class="text-danger error-msg"></p>
+                                </div>
                                 <div class="d-flex justify-content-end">
                                     <button class="border-0 rounded-pill submit-btn site-primary px-5 py-2 text-white">Post Job</button>
                                 </div>
@@ -115,7 +115,7 @@
         <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
         <script src="{{asset('assets/js/step.js')}}"></script>
         <script>
-            const step = new Step('#register-form', ['btn', 'post-job'], '/giver/{{Auth::id()}}/store', true);
+            const step = new Step('#register-form', ['btn', 'post-job'], 'jobs/giver/{{Auth::id()}}/store', true);
         </script>
     @endpush
 </x-base>

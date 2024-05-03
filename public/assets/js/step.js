@@ -18,7 +18,6 @@ class Step {
         this.action = action;
         this.inputs = [...this.selectedForm.querySelectorAll('.step input')];
         this.multipleStep = multipleStep;
-        console.log(this.multipleStep);
         this.init();
 
         this.nextBtn = document.createElement('button');

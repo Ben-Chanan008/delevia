@@ -29,36 +29,39 @@ class JobsController extends Controller
             'job_title' => ['required'],
             'company' => ['required'],
             'tags' => ['required'],
-            'date_of_post' => ['required|date'],
+            'date_of_post' => ['required', 'date_format:Y-m-d'],
             'location' => ['required'],
             'description' => ['required'],
-            'degree_req' => ['required'],
             'experience' => ['required'],
+            'needed_skills' => ['required'],
+            'job_type' => ['required'],
             'salary' => ['required'],
             'rate' => ['required'],
-            'job_type' => ['required'],
-            'needed_skills' => ['required'],
-            'currency' => ['required'],
+            'currency' => ['required']
         ]);
 
         if($fields_validate->fails()){
-            $error_message = 'A field is not filled';
-            return response(['message' => $error_message, 'type' => 'error'], 422);
+            $error_message = 'There are a bunch of errors!';
+            $errCount = $fields_validate->errors()->count();
+            if($errCount <= 1)
+                return response(['message' => $fields_validate->errors()->all(), 'type' => 'error'], 422);
+            else
+                return response(['message' => $error_message, 'type' => 'error'], 422);
         } else
             $fields = $fields_validate->validated();
 
         $fields['currency'] = Currencies::where(['currency_name' => $fields['currency']])->get()->first()->currency_name;
+        $fields['company'] = Company::where(['company_name' => $fields['company']])->get()->first()->id;
 
         try{
-            User::create([
-                'user_id' => Auth::id(),
-                'job_title' => $fields['job_title'],
-                'company' => $fields['company'],
+            Jobs::create([
+                'user_id' => $user->id,
+                'title' => $fields['job_title'],
+                'company_id' => $fields['company'],
                 'tags' => $fields['tags'],
-                'date_of_post' => $fields['date_of_post'],
+                'date_of_post' => $fields['date_of_post'] . now()->format('H:i:s'),
                 'location' => $fields['location'],
                 'description' => $fields['description'],
-                'degree_req' => $fields['degree_req'],
                 'experience' => $fields['experience'],
                 'salary' => $fields['salary'],
                 'rate' => $fields['rate'],
@@ -70,13 +73,13 @@ class JobsController extends Controller
             return response(['message' => 'Job created successfully!', 'type' => 'success'], 200);
 
         }catch (\Exception $e){
-            return response(['message' => 'An error Occurred', 'type' => 'error'], 500);
+            return response(['message' => $e->getMessage(), 'type' => 'error'], 500);
         }
     }
 
     public function show_create(User $user)
     {
-        return view('jobs.giver.create', ['company' => Company::where(['user_id' => Auth::id()])->get(), 'currency' => Currencies::all()]);
+        return view('jobs.giver.create', ['company' => Company::where(['user_id' => $user->id])->get(), 'currency' => Currencies::all()]);
     }
 
     public function job_applicants(Request $request, User $user, Jobs $job)

@@ -170,8 +170,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'date_of_post' => [
+            'required' => 'The date of post is required.',
+            'date' => 'The date of post must be a valid date.',
+            'date_format' => 'The date of post must be in the format YYYY-MM-DD.',
+            'same' => 'The date of post must be today\'s date.',
         ],
     ],
 
