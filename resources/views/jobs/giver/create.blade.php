@@ -41,11 +41,6 @@
                                     <p class="text-danger error-msg"></p>
                                 </div>
                                 <div class="form-group mb-3 w-100">
-                                    <input type="date" class="form-control p-3 w-100" name="date_of_post" placeholder="Date of Opening" validate="name"/>
-                                    <label for="name" class="floating-label">Date of opening</label>
-                                    <p class="text-danger error-msg"></p>
-                                </div>
-                                <div class="form-group mb-3 w-100">
                                     <input type="text" class="form-control p-3 w-100" name="location" placeholder="Location" validate="name"/>
                                     <label for="name" class="floating-label">Location</label>
                                     <p class="text-danger error-msg"></p>
@@ -66,8 +61,8 @@
                                     <p class="text-danger error-msg"></p>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <input type="text" class="form-control p-3" name="needed_skills" placeholder="Skills needed" validate="name"/>
-                                    <label for="name" class="floating-label">Skills needed</label>
+                                    <input type="text" class="form-control p-3" name="degree_req" placeholder="Degree Req" validate="name"/>
+                                    <label for="name" class="floating-label">Degree Req</label>
                                     <p class="text-danger error-msg"></p>
                                 </div>
                                 <div class="form-group mb-3">

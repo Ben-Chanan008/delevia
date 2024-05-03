@@ -29,11 +29,10 @@ class JobsController extends Controller
             'job_title' => ['required'],
             'company' => ['required'],
             'tags' => ['required'],
-            'date_of_post' => ['required', 'date_format:Y-m-d'],
             'location' => ['required'],
             'description' => ['required'],
             'experience' => ['required'],
-            'needed_skills' => ['required'],
+            'degree_req' => ['required'],
             'job_type' => ['required'],
             'salary' => ['required'],
             'rate' => ['required'],
@@ -50,7 +49,7 @@ class JobsController extends Controller
         } else
             $fields = $fields_validate->validated();
 
-        $fields['currency'] = Currencies::where(['currency_name' => $fields['currency']])->get()->first()->currency_name;
+        $fields['currency'] = Currencies::where(['currency_name' => $fields['currency']])->get()->first()->id;
         $fields['company'] = Company::where(['company_name' => $fields['company']])->get()->first()->id;
 
         try{
@@ -59,14 +58,13 @@ class JobsController extends Controller
                 'title' => $fields['job_title'],
                 'company_id' => $fields['company'],
                 'tags' => $fields['tags'],
-                'date_of_post' => $fields['date_of_post'] . now()->format('H:i:s'),
                 'location' => $fields['location'],
                 'description' => $fields['description'],
                 'experience' => $fields['experience'],
                 'salary' => $fields['salary'],
                 'rate' => $fields['rate'],
                 'job_type' => $fields['job_type'],
-                'needed_skills' => $fields['needed_skills'],
+                'degree_req' => $fields['degree_req'],
                 'currency' => $fields['currency']
             ]);
 
