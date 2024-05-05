@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Jobs extends Model
@@ -26,18 +27,18 @@ class Jobs extends Model
         'currency',
     ];
 
-    public function users(): HasMany
+    public function users(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function company(): HasMany
+    public function company(): BelongsTo
     {
-        return $this->hasMany(Company::class);
+        return $this->belongsTo(Company::class);
     }
 
-    public function currency(): HasMany
+    public function currency(): BelongsTo
     {
-        return $this->hasMany(Currencies::class);
+        return $this->belongsTo(Currencies::class);
     }
 }

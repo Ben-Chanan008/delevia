@@ -1,6 +1,8 @@
 const owl = document.querySelector('.owl-carousel');
 const eyeOpener = document.querySelector('.eye-opener');
 const applicantCard = [...document.querySelectorAll('.jobs')];
+const jobTag = [...document.querySelectorAll('.jobs .tags')];
+
 
 if(owl)
     $(document).ready(() => {

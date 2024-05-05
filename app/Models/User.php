@@ -59,13 +59,13 @@ class User extends Authenticatable
         return $this->hasMany(UserAccess::class);
     }
 
-    public function jobs(): BelongsTo
+    public function jobs(): HasMany
     {
-        return $this->belongsTo(Jobs::class);
+        return $this->hasMany(Jobs::class);
     }
 
-    public function company(): BelongsTo
+    public function company(): HasMany
     {
-        return $this->belongsTo(Company::class);
+        return $this->hasMany(Company::class);
     }
 }

@@ -13,13 +13,13 @@ class Company extends Model
 
     public $table = 'company';
 
-    public function jobs(): BelongsTo
+    public function jobs(): HasMany
     {
-        return $this->belongsTo(Company::class);
+        return $this->hasMany(Jobs::class);
     }
 
-    public function users(): HasMany
+    public function users(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

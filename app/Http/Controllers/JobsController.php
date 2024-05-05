@@ -20,7 +20,19 @@ class JobsController extends Controller
 
     public function giver()
     {
-        return view('jobs.giver.index');
+        $tags = [];
+        $companies = [];
+        $jobs = Jobs::where(['user_id' => Auth::id()])->get();
+        for($i = 0; $i < sizeof($jobs); $i++){
+            $companies[] = Jobs::find(1)->company;
+        }
+
+        foreach ($jobs as $job){
+            $tags_split = explode(",", $job->tags);
+            $tags[] = $tags_split;
+        }
+
+        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->get(), 'tags' => $tags, 'companies' => $companies]);
     }
 
     public function create(Request $request, User $user)
