@@ -36,21 +36,29 @@ class CheckUserType
                     foreach ($routes as $route){
                         $path = config('app.url'). '/' . $request->path();
                         $parameters = [
-                            'user' => str_contains($route->parameter, 'user') ? Auth::user()->id : null,
-                            'job' => str_contains($route->parameter, 'jobs') ? 1 : null,
+                            'user' => str_contains($route->parameter, 'user') ? Auth::id() : null,
+                            'job' => str_contains($route->parameter, 'job') ? true : null,
                             'both' => str_contains($route->parameter, '|') ? true : null
                         ];
                         $routes = [];
                         if($route->has_parameter){
                             if($parameters['both']){
-                                $jobs = Jobs::where(['user_id' => Auth::user()->id])->get();
+                                $jobs = Jobs::where(['user_id' => Auth::id()])->get();
                                 foreach ($jobs as $job){
-                                    $route_val3 = route($route->route, ['user' => Auth::id(), 'jobs' => $job->id]);
+                                    $route_val3 = route($route->route, ['user' => Auth::id(), 'job' => $job->id]);
                                     $routes[] = $route_val3;
                                 }
                             } else{
-                                $route_val1 = route($route->route, $parameters['both'] ?? ($parameters['user'] ?? $parameters['jobs']));
-                                $routes[] = $route_val1;
+                                if($parameters['job']){
+                                    $jobs = Jobs::where(['user_id' => Auth::id()])->get();
+                                    foreach ($jobs as $job){
+                                        $route_val1 = route($route->route, [$parameters['user'] ?? null, 'job' => $job->id]);
+                                        $routes[] = $route_val1;
+                                    }
+                                } else{
+                                    $route_val2 = route($route->route, [$parameters['job'] ?? null, 'user' => Auth::id()]);
+                                    $routes[] = $route_val2;
+                                }
                             }
                         } else{
                             $route_val2 = route($route->route);
@@ -70,5 +78,12 @@ class CheckUserType
             return $next($request);
         else
             abort(403, 'Unauthorized access');
+    }
+
+    public static function expose($data)
+    {
+        echo '<pre>';
+        var_dump($data);
+        echo '</pre>';
     }
 }

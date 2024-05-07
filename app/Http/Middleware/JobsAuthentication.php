@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JobsAuthentication
 {
+
+    public static array $test = ['message' => 'This is for debugging'];
+
     /**
      * Handle an incoming request.
      *
@@ -17,10 +20,10 @@ class JobsAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
+
         if ($request->route('user') && !$request->route('job')) {
             $user = Auth::id();
             $owner = $request->route('user');
-//            dd($owner);
 
             if ($user === $owner->id)
                 return $next($request);
@@ -28,9 +31,9 @@ class JobsAuthentication
                 abort(403, 'Unauthorized Access');
         } elseif ($request->route('job') && !$request->route('user')) {
             $user = Auth::id();
-            $job_id = $request->route('job');
+            $job = $request->route('job');
 
-            if ($job_id->id === $user)
+            if ($job->user_id === $user)
                 return $next($request);
             else
                 abort(403, 'Unauthorized Access');

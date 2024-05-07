@@ -20,19 +20,7 @@ class JobsController extends Controller
 
     public function giver()
     {
-        $tags = [];
-        $companies = [];
-        $jobs = Jobs::where(['user_id' => Auth::id()])->get();
-        for($i = 0; $i < sizeof($jobs); $i++){
-            $companies[] = Jobs::find(1)->company;
-        }
-
-        foreach ($jobs as $job){
-            $tags_split = explode(",", $job->tags);
-            $tags[] = $tags_split;
-        }
-
-        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->get(), 'tags' => $tags, 'companies' => $companies]);
+        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->get()]);
     }
 
     public function create(Request $request, User $user)
@@ -80,7 +68,7 @@ class JobsController extends Controller
                 'currency' => $fields['currency']
             ]);
 
-            return response(['message' => 'Job created successfully!', 'type' => 'success'], 200);
+            return response(['message' => 'Job created successfully!', 'type' => 'success', 'redirect' => 'jobs/giver'], 200);
 
         }catch (\Exception $e){
             return response(['message' => $e->getMessage(), 'type' => 'error'], 500);
@@ -94,8 +82,7 @@ class JobsController extends Controller
 
     public function job_applicants(Request $request, User $user, Jobs $job)
     {
-//        dd($job);
-//        return view('jobs.giver.applicants', ['job_data' => $job]);
+
     }
 
 }
