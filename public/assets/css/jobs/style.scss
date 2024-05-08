@@ -12,4 +12,10 @@
 
 .jobs{
     cursor: pointer;
+    .job-title{
+        overflow: hidden;
+        text-wrap: nowrap;
+        width: 167px;
+        text-overflow: ellipsis;
+    }
 }

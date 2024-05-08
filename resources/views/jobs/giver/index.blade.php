@@ -1,4 +1,4 @@
-@php use App\Models\Company;use Illuminate\Support\Facades\Auth; @endphp
+@php use App\Http\Middleware\CheckUserType; use Carbon\Carbon; use App\Models\Company;use Illuminate\Support\Facades\Auth; @endphp
 
 <x-base title="Create A Job">
     @push('styles')
@@ -40,15 +40,50 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center flex-column">
-                            <p class="fw-bold">{{$job->title}}</p>
+                            <p class="fw-bold mb-2 fs-5 job-title">{{$job->title}}</p>
                             <div class="d-flex mb-2 tags">
-                                @php $tags = explode(',', $job->tags)@endphp
-                                @foreach($tags as $idx => $tag)
+                                @php
+                                    $tags = explode(',', $job->tags);
+									$get_two_array_items = fn ($array) => count($array) > 2 ? array_slice($array,0, 2) : $array;
+
+                                    $create_date = $job->created_at;
+									$today = now();
+									$post_message = '';
+
+                                    $secondsDifference = $today->diffInSeconds($create_date);
+                                    $minutesDifference = $today->diffInMinutes($create_date);
+                                    $hoursDifference = $today->diffInHours($create_date);
+                                    $daysDifference = $today->diffInDays($create_date);
+
+                                    switch (true) {
+                                        case $secondsDifference < 60:
+                                            $post_message = "Posted just now";
+                                            break;
+                                        case $minutesDifference < 60:
+                                            $post_message = "Posted $minutesDifference minutes ago";
+                                            break;
+                                        case $hoursDifference < 24:
+                                            $post_message = "Posted $hoursDifference hours ago";
+                                            break;
+                                        case $daysDifference == 1:
+                                            $post_message = "Posted yesterday";
+                                            break;
+                                        case $daysDifference > 1 && $daysDifference <= 7:
+                                            $post_message = "Posted $daysDifference days ago";
+                                            break;
+                                        default:
+                                            $post_message = "Posted more than a week ago";
+                                            break;
+                                    }
+                                @endphp
+                                @foreach($get_two_array_items($tags) as $idx => $tag)
                                     <div class="tag me-2">{{$tag}}</div>
                                 @endforeach
                             </div>
-                            <p class="fw-bold">{{Company::where(['id' => $job->company_id])->get()->first()->company_name}}</p>
-                            <p class="text-secondary">Posted 20+ days ago</p>
+                            <p class="fw-bold mb-2"><i class="far fa-building me-2"></i>{{Company::where(['id' => $job->company_id])->get()->first()->company_name}}</p>
+                            <p class="mb-2"><i class="far fa-location-dot me-2 "></i>{{ucfirst($job->location)}}</p>
+                            <p class="mb-2"><i class="far fa-code-branch me-2"></i>{{ucfirst($job->job_type)}}</p>
+                            <p class="text-secondary"><i class="far fa-calendar-day me-2"></i>{{$post_message}}</p>
                         </div>
                     </div>
                 </div>
