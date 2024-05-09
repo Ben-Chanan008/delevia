@@ -2,6 +2,8 @@ const owl = document.querySelector('.owl-carousel');
 const eyeOpener = document.querySelector('.eye-opener');
 const applicantCard = [...document.querySelectorAll('.jobs')];
 const jobTag = [...document.querySelectorAll('.jobs .tags')];
+const deleteBtn = document.querySelector('.jobs .delete-btn');
+const editBtn = document.querySelector('.jobs .edit-btn');
 
 
 if(owl)
@@ -55,7 +57,12 @@ if(applicantCard)
         job.addEventListener('click', (e) => {
             e.preventDefault();
             let jobId = e.currentTarget.getAttribute('id'),
+                target = e.target,
                  ROUTE = `http://localhost:8000/jobs/giver/${jobId}/applicants`;
+
+            if(target.tagName === 'BUTTON'){
+                return;
+            }
 
             location.href = ROUTE;
         });

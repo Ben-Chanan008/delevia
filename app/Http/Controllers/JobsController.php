@@ -82,7 +82,7 @@ class JobsController extends Controller
 
     public function job_applicants(Request $request, User $user, Jobs $job)
     {
-
+        return view('jobs.giver.applicants', ['job' => $job]);
     }
 
 }

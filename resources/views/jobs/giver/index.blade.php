@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/jobs/style.css')}}">
     @endpush
     <x-navbar/>
+    <x-popup.pop-up title="Confirm deletion" body="Are you sure you want to delete"/>
     <div class="hero p-5 mb-5">
         <p class="text-white fs-1 fw-bold text-center">CREATE YOUR NEXT JOB</p>
         <div class="d-flex justify-content-center">
@@ -31,12 +32,9 @@
                                 <img src="{{asset('assets/images/ask-me.svg')}}" class="img-fluid" alt="img" height="100px" width="200px"/>
                             </div>
                             <div class="d-flex">
-                                <a href="" class="btn p-0">
-                                    <i class="far fa-pen me-2 ms-2 mt-3"></i>
-                                </a>
-                                <a href="" class="btn p-0">
-                                    <i class="far fa-gear me-2 ms-2 mt-3"></i>
-                                </a>
+                                <button type="button" class="p-0 btn bg-danger text-white px-5 w-100 mt-2" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center flex-column">
