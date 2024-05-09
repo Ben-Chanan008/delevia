@@ -57,11 +57,16 @@ if(applicantCard)
         job.addEventListener('click', (e) => {
             e.preventDefault();
             let jobId = e.currentTarget.getAttribute('id'),
+                loggedInUser = e.currentTarget.getAttribute('user_id'),
                 target = e.target,
                  ROUTE = `http://localhost:8000/jobs/giver/${jobId}/applicants`;
 
             if(target.tagName === 'BUTTON'){
                 return;
+            }
+            if(target.tagName === 'A'){
+                ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/edit/${jobId}`
+                location.href = ROUTE;
             }
 
             location.href = ROUTE;

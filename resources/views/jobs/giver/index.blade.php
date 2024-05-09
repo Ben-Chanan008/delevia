@@ -25,16 +25,19 @@
     <div class="container mt-5">
         <div class="row">
             @foreach($jobs as $job)
-                <div class="col-lg-4 gx-4 jobs" id="{{$job->id}}">
+                <div class="col-lg-4 gx-4 jobs" id="{{$job->id}}" user_id="{{Auth::id()}}">
                     <div class="d-flex">
                         <div class="me-2">
                             <div class="p-2 rounded-4 bg-secondary">
                                 <img src="{{asset('assets/images/ask-me.svg')}}" class="img-fluid" alt="img" height="100px" width="200px"/>
                             </div>
                             <div class="d-flex">
-                                <button type="button" class="p-0 btn bg-danger text-white px-5 w-100 mt-2" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                <button type="button" class="p-0 btn bg-danger text-white px-3 w-50 mt-2 me-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#delete-modal">
                                     Delete
                                 </button>
+                                <a class="p-0 btn btn-primary rounded-pill px-3 w-50 mt-2">
+                                    Edit
+                                </a>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center flex-column">
