@@ -1,4 +1,4 @@
-@php use App\Http\Middleware\CheckUserType; use Carbon\Carbon; use App\Models\Company;use Illuminate\Support\Facades\Auth; @endphp
+@php use App\Http\Middleware\CheckUserType; use App\Models\Jobs;use Carbon\Carbon; use App\Models\Company;use Illuminate\Support\Facades\Auth; @endphp
 
 <x-base title="Create A Job">
     @push('styles')
@@ -6,6 +6,7 @@
     @endpush
     <x-navbar/>
     <x-popup.pop-up title="Confirm deletion" body="Are you sure you want to delete"/>
+    <div class="msg-alerts"></div>
     <div class="hero p-5 mb-5">
         <p class="text-white fs-1 fw-bold text-center">CREATE YOUR NEXT JOB</p>
         <div class="d-flex justify-content-center">
@@ -24,15 +25,15 @@
     </div>
     <div class="container mt-5">
         <div class="row">
-            @foreach($jobs as $job)
-                <div class="col-lg-4 gx-4 jobs" id="{{$job->id}}" user_id="{{Auth::id()}}">
+            @forelse($jobs as $job)
+                <div class="col-lg-4 gx-4 jobs mb-5" id="{{$job->id}}" user_id="{{Auth::id()}}">
                     <div class="d-flex">
                         <div class="me-2">
                             <div class="p-2 rounded-4 bg-secondary">
                                 <img src="{{asset('assets/images/ask-me.svg')}}" class="img-fluid" alt="img" height="100px" width="200px"/>
                             </div>
                             <div class="d-flex">
-                                <button type="button" class="p-0 btn bg-danger text-white px-3 w-50 mt-2 me-2 rounded-pill" data-bs-toggle="modal" data-bs-target="#delete-modal">
+                                <button type="button" class="p-0 btn bg-danger text-white px-3 w-50 mt-2 me-2 open-delete rounded-pill" data-bs-toggle="modal" data-bs-target="#delete-modal" user_id="{{Auth::id()}}" job_id="{{$job->id}}">
                                     Delete
                                 </button>
                                 <a class="p-0 btn btn-primary rounded-pill px-3 w-50 mt-2">
@@ -73,7 +74,7 @@
                                             $post_message = "Posted $daysDifference days ago";
                                             break;
                                         default:
-                                            $post_message = "Posted more than a week ago";
+                                            $post_message = "More than a week";
                                             break;
                                     }
                                 @endphp
@@ -84,11 +85,27 @@
                             <p class="fw-bold mb-2"><i class="far fa-building me-2"></i>{{Company::where(['id' => $job->company_id])->get()->first()->company_name}}</p>
                             <p class="mb-2"><i class="far fa-location-dot me-2 "></i>{{ucfirst($job->location)}}</p>
                             <p class="mb-2"><i class="far fa-code-branch me-2"></i>{{ucfirst($job->job_type)}}</p>
-                            <p class="text-secondary"><i class="far fa-calendar-day me-2"></i>{{$post_message}}</p>
+                            <p class="text-secondary"><i class="far fa-calendar-day me-2"></i>{{$create_date->format('Y-m-d')}}</p>
                         </div>
                     </div>
                 </div>
-            @endforeach
+                @empty
+                    <div class="d-flex justify-content-center align-items-center">
+                        <p class="h4 fw-bold">
+                            @if(!$trashed)
+                                Get started with your <span class="site-text-primary">Delevia</span> journey today!
+                            @else
+                                Keep posting jobs on <span class="site-text-primary">Delevia</span> you'll find that candidate!
+                            @endif
+                        </p>
+                    </div>
+            @endforelse
+        </div>
+        <div class="mt-5">
+            {{$jobs->links()}}
         </div>
     </div>
+    @push('scripts')
+        <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
+    @endpush
 </x-base>

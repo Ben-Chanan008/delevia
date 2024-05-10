@@ -15,4 +15,26 @@
     width: 167px;
     text-overflow: ellipsis; }
 
+.jobs-user-icon {
+  height: 200px !important;
+  width: 200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; }
+
+.ellipsis {
+  overflow: hidden;
+  text-wrap: nowrap;
+  width: 167px;
+  text-overflow: ellipsis; }
+
+.active > .page-link {
+  background-color: var(--bs-primary-rgb) !important;
+  color: #ffff; }
+
+.page-link {
+  color: #000;
+  border: 1px solid #ccc !important; }
+
 /*# sourceMappingURL=style.css.map */

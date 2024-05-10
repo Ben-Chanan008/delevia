@@ -1,9 +1,29 @@
+const msgShow = ({message, type, mode, duration, redirect}) => {
+    const msg = new MessageAlerts('.msg-alerts');
+
+    msg.init({
+        type: type,
+        msg: message,
+        mode: mode ?? 'light',
+        duration
+    });
+
+    setTimeout(() => {
+        if (redirect){
+            if(redirect === 'reload')
+                location.reload();
+            else
+                location.href = redirect;
+        }
+    }, duration ?? 5000)
+}
+
 const owl = document.querySelector('.owl-carousel');
 const eyeOpener = document.querySelector('.eye-opener');
 const applicantCard = [...document.querySelectorAll('.jobs')];
 const jobTag = [...document.querySelectorAll('.jobs .tags')];
-const deleteBtn = document.querySelector('.jobs .delete-btn');
-const editBtn = document.querySelector('.jobs .edit-btn');
+const deleteBtn = document.querySelector('#delete-btn');
+
 
 
 if(owl)
@@ -72,3 +92,17 @@ if(applicantCard)
             location.href = ROUTE;
         });
     });
+
+if(deleteBtn)
+    deleteBtn.addEventListener('click',(e) => {
+
+        let loggedInUser = document.querySelector('.open-delete').getAttribute('user_id'),
+            jobId = document.querySelector('.open-delete').getAttribute('job_id'),
+            closeModalBtn = document.querySelector('.btn-close'),
+            ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/delete/${jobId}`;
+        fetch(ROUTE).then(res => res.json()).then(data => {
+            closeModalBtn.click();
+            msgShow({message: data.message, type: data.type, redirect: data.redirect ?? null, mode: 'light'});
+        });
+    });
+

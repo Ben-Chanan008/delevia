@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class JobsController extends Controller
 {
     //
+
     public function seeker()
     {
         return view('jobs.seeker.index');
@@ -20,7 +21,13 @@ class JobsController extends Controller
 
     public function giver()
     {
-        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->get()]);
+        $jobs = Jobs::onlyTrashed()->where(['user_id' => Auth::id()])->get();
+        if($jobs->isEmpty())
+            $trashed = false;
+        else{
+            $trashed = true;
+        }
+        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->paginate(10), 'trashed' => $trashed]);
     }
 
     public function create(Request $request, User $user)
@@ -85,4 +92,13 @@ class JobsController extends Controller
         return view('jobs.giver.applicants', ['job' => $job]);
     }
 
+    public function delete_job(Request $request, User $user, Jobs $job)
+    {
+        try{
+            $job->delete();
+            return response(['type' => 'success', 'message' => 'Job Listing has been deleted!', 'redirect' => 'reload'], 200);
+        } catch (\Exception $e){
+            return response(['type' => 'error', 'message' => 'An error occurred!!'], 500);
+        }
+    }
 }

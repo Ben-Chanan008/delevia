@@ -287,19 +287,7 @@ class Step {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
-            const message = new MessageAlerts('.msg-alerts'), duration = 5000;
-
-            message.init({
-                type: data.type,
-                msg: data.message,
-                mode: 'light',
-                duration
-            });
-
-            setTimeout(() => {
-                if (data.redirect)
-                    location.href = data.redirect;
-            }, duration)
+            msgShow({message: data.message, type: data.type, redirect: data.redirect ?? null, mode: 'light'})
         });
     }
 }
