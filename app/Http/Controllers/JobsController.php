@@ -101,4 +101,14 @@ class JobsController extends Controller
             return response(['type' => 'error', 'message' => 'An error occurred!!'], 500);
         }
     }
+
+    public function show_edit(User $user, Jobs $job)
+    {
+        return view('jobs.giver.edit', ['job' => $job, 'currency' => Currencies::all()]);
+    }
+
+    public function edit_job(Request $request, User $user, Jobs $jobs)
+    {
+        dd($request->all());
+    }
 }

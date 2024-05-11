@@ -21,9 +21,7 @@ const msgShow = ({message, type, mode, duration, redirect}) => {
 const owl = document.querySelector('.owl-carousel');
 const eyeOpener = document.querySelector('.eye-opener');
 const applicantCard = [...document.querySelectorAll('.jobs')];
-const jobTag = [...document.querySelectorAll('.jobs .tags')];
 const deleteBtn = document.querySelector('#delete-btn');
-
 
 
 if(owl)
@@ -95,7 +93,6 @@ if(applicantCard)
 
 if(deleteBtn)
     deleteBtn.addEventListener('click',(e) => {
-
         let loggedInUser = document.querySelector('.open-delete').getAttribute('user_id'),
             jobId = document.querySelector('.open-delete').getAttribute('job_id'),
             closeModalBtn = document.querySelector('.btn-close'),

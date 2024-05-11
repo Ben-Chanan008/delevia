@@ -224,6 +224,11 @@ class Step {
             msg: label => `${label} is not valid`
         },
         {
+            attribute: 'no-validate',
+            isValid: input => true,
+            msg: label => `${label} is not valid`
+        },
+        {
             attribute: 'email',
             isValid: input => {
                 let regEx = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;

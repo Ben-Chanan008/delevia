@@ -2,7 +2,7 @@
 <nav class="bg-white container-fluid">
     <div class="d-flex justify-content-around p-3 align-items-center">
         <a href="/" class="nav-brand text-black text-decoration-none">
-            <h3>DELEVIA</h3>
+            <h3 class="fw-bold site-text-primary">DELEVIA</h3>
         </a>
         <ul class="list-unstyled d-flex">
             <a href="{{route('home')}}" class="px-3 text-decoration-none text-black">
