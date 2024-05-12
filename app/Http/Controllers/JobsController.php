@@ -107,8 +107,32 @@ class JobsController extends Controller
         return view('jobs.giver.edit', ['job' => $job, 'currency' => Currencies::all()]);
     }
 
-    public function edit_job(Request $request, User $user, Jobs $jobs)
+    public function edit_job(Request $request, User $user, Jobs $job)
     {
-        dd($request->all());
+        $fields = $request->all();
+
+        try{
+            $fields['currency'] = Currencies::where(['currency_name' => $fields['currency']])->get()->first()->id;
+            $fields['company'] = Company::where(['company_name' => $fields['company']])->get()->first()->id;
+
+            Jobs::where(['id' => $job->id])->update([
+                'user_id' => $user->id,
+                'title' => $fields['job_title'],
+                'company_id' => $fields['company'],
+                'tags' => $fields['tags'],
+                'location' => $fields['location'],
+                'description' => $fields['description'],
+                'experience' => $fields['experience'],
+                'salary' => $fields['salary'],
+                'rate' => $fields['rate'],
+                'job_type' => $fields['job_type'],
+                'degree_req' => $fields['degree_req'],
+                'currency' => $fields['currency']
+            ]);
+
+            return response(['message' => 'Job updated successfully!', 'type' => 'success', 'redirect' => '/jobs/giver'], 200);
+        } catch (\Exception $e){
+            return response(['type' => 'error', 'message' => 'An error occurred!!', 'error' => $e->getMessage()], 500);
+        }
     }
 }
