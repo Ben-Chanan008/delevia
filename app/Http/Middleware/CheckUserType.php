@@ -38,8 +38,10 @@ class CheckUserType
                         $parameters = [
                             'user' => str_contains($route->parameter, 'user') ? Auth::id() : null,
                             'job' => str_contains($route->parameter, 'job') ? true : null,
-                            'both' => str_contains($route->parameter, '|') ? true : null
+                            'both' => str_contains($route->parameter, '|') ? true : null,
+                            'applicant' => str_contains($route->parameter, 'applicant') ? true : null,
                         ];
+
                         $routes = [];
                         if($route->has_parameter){
                             if($parameters['both']){
@@ -48,6 +50,10 @@ class CheckUserType
                                     $route_val3 = route($route->route, ['user' => Auth::id(), 'job' => $job->id]);
                                     $routes[] = $route_val3;
                                 }
+    /*
+                                    if($parameters['applicant']){
+                                        foreach (){}
+                                    }*/
                             } else{
                                 if($parameters['job']){
                                     $jobs = Jobs::where(['user_id' => Auth::id()])->get();
