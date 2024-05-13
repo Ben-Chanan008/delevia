@@ -54,9 +54,19 @@ class User extends Authenticatable
         return $this->belongsToMany(Roles::class, 'role_user')->using(RoleUser::class);
     }
 
+    public function job_applicants(): BelongsToMany
+    {
+        return $this->belongsToMany(Jobs::class, 'applicants', 'seeker_id')->using(Applicants::class);
+    }
+
     public function user_acesses(): HasMany
     {
         return $this->hasMany(UserAccess::class);
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Applications::class);
     }
 
     public function jobs(): HasMany

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Applicants;
 use App\Models\Jobs;
 use App\Models\RolesAccess;
 use App\Models\Routes;
@@ -25,6 +26,7 @@ class CheckUserType
         $user = User::find(Auth::user()->id);
         $user_role = $user->roles;
         $flag = false;
+        $no_applicants = false;
 
         foreach ($user_role as $role) {
             $role_id = $role->getOriginal()['id'];
@@ -39,7 +41,7 @@ class CheckUserType
                             'user' => str_contains($route->parameter, 'user') ? Auth::id() : null,
                             'job' => str_contains($route->parameter, 'job') ? true : null,
                             'both' => str_contains($route->parameter, '|') ? true : null,
-                            'applicant' => str_contains($route->parameter, 'applicant') ? true : null,
+                            'applicant' => str_contains($route->parameter, 'job|applicant') ? true : null,
                         ];
 
                         $routes = [];
@@ -47,13 +49,22 @@ class CheckUserType
                             if($parameters['both']){
                                 $jobs = Jobs::where(['user_id' => Auth::id()])->get();
                                 foreach ($jobs as $job){
-                                    $route_val3 = route($route->route, ['user' => Auth::id(), 'job' => $job->id]);
-                                    $routes[] = $route_val3;
-                                }
-    /*
+                                        $applicants = Applicants::where(['job_id' => $job->id])->get();
                                     if($parameters['applicant']){
-                                        foreach (){}
-                                    }*/
+                                        if($applicants->isEmpty())
+                                            $no_applicants = true;
+                                        else{
+                                            foreach ($applicants as $applicant){
+                                                $applicant_route = route($route->route, ['job' => $job->id, 'applicant' => $applicant->seeker_id]);
+                                                $routes[] = $applicant_route;
+                                            }
+                                        }
+                                    } else{
+                                        $route_val3 = route($route->route, ['user' => Auth::id(), 'job' => $job->id]);
+                                        $routes[] = $route_val3;
+                                    }
+                                }
+
                             } else{
                                 if($parameters['job']){
                                     $jobs = Jobs::where(['user_id' => Auth::id()])->get();
@@ -71,6 +82,8 @@ class CheckUserType
                             $routes[] = $route_val2;
                         }
 
+                        $this::expose($routes);
+
                         foreach ($routes as $accessed_routes)
                             if($path === $accessed_routes){
                                 $flag = true;
@@ -86,7 +99,7 @@ class CheckUserType
             abort(403, 'Unauthorized access');
     }
 
-    public static function expose($data)
+    public static function expose($data): void
     {
         echo '<pre>';
         var_dump($data);

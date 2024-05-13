@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicants;
+use App\Models\Applications;
 use App\Models\Company;
 use App\Models\Currencies;
 use App\Models\Jobs;
@@ -89,7 +91,10 @@ class JobsController extends Controller
 
     public function job_applicants(Request $request, User $user, Jobs $job)
     {
-        return view('jobs.giver.applicants', ['job' => $job]);
+        return view('jobs.giver.applicants', [
+            'job' => $job,
+            'applicants' => Applicants::where(['job_id' => $job->id])->get()
+        ]);
     }
 
     public function delete_job(Request $request, User $user, Jobs $job)
@@ -134,5 +139,10 @@ class JobsController extends Controller
         } catch (\Exception $e){
             return response(['type' => 'error', 'message' => 'An error occurred!!', 'error' => $e->getMessage()], 500);
         }
+    }
+
+    public function show_application(Request $request, Jobs $job, Applicants $applicant)
+    {
+        return view('jobs.giver.view-applicant');
     }
 }
