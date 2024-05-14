@@ -45,6 +45,10 @@
                             <i class="far fa-gear me-3"></i>
                             <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Manage Listings</a>
                         </div>
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-building me-3"></i>
+                            <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Create Company</a>
+                        </div>
                     @else
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-business-time me-3"></i>

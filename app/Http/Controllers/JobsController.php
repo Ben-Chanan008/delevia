@@ -143,6 +143,6 @@ class JobsController extends Controller
 
     public function show_application(Request $request, Jobs $job, Applicants $applicant)
     {
-        return view('jobs.giver.view-applicant');
+        return view('jobs.giver.view-applicant', ['applicant' => $applicant]);
     }
 }
