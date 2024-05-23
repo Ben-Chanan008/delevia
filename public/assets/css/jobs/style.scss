@@ -13,7 +13,7 @@
     cursor: pointer;
     .job-title{
         overflow: hidden;
-        text-wrap: none;
+        white-space: nowrap;
         width: 167px;
         text-overflow: ellipsis;
     }

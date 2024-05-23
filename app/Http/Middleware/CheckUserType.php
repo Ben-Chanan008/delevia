@@ -25,14 +25,14 @@ class CheckUserType
     {
         $user = User::find(Auth::user()->id);
         $user_role = $user->roles;
-        $flag = false;
+        $flag = true;
         $no_applicants = false;
 
         foreach ($user_role as $role) {
             $role_id = $role->getOriginal()['id'];
-            $modules = RolesAccess::where(['roles_id' => $role_id])->orderBy('modules_id', 'asc')->get(['modules_id']);
+            $modules = RolesAccess::where(['role_id' => $role_id])->orderBy('module_id', 'asc')->get(['module_id']);
             foreach ($modules as $module) {
-                $sub_module = SubModules::where(['module_id' => $module->modules_id])->get(['id', 'sub_module']);
+                $sub_module = SubModules::where(['module_id' => $module->module_id])->get(['id', 'sub_module']);
                 foreach ($sub_module as $sub){
                     $routes = Routes::where(['sub_module_id' => $sub->id])->get();
                     foreach ($routes as $route){
@@ -82,10 +82,11 @@ class CheckUserType
                             $routes[] = $route_val2;
                         }
 
-                        foreach ($routes as $accessed_routes)
+                        foreach ($routes as $accessed_routes){
                             if($path === $accessed_routes){
                                 $flag = true;
                                 break;}
+                        }
                     }
                 }
             }

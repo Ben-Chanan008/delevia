@@ -17,14 +17,8 @@ class DatabaseSeeder extends Seeder
     {
          \App\Models\User::factory()->create();
 
-         Company::factory()->create([
-            'user_id' => 8,
-            'company_name' => 'Khinny Exec'
-         ]);
-         Currencies::factory()->create([
-            'user_id' => 8,
-            'company_name' => 'Khinny Exec'
-         ]);
+         Company::factory()->create();
+         Currencies::factory()->create();
          Jobs::factory(20)->create();
 
         // \App\Models\User::factory()->create([

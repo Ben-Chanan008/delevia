@@ -92,7 +92,7 @@ class UserController extends Controller
                 else
                     $route = '/jobs/seeker';
 
-                return response(['message' => 'Sign In successful!! Please Wait', 'redirect' => $route, 'type' => 'success'], 200);
+                return response(['message' => 'Sign In successful!! Please Wait', 'redirect' => $route, 'type' => 'success', 'duration' => 90000000], 200);
             } else{
                 if(!Hash::check($fields['password'], $attempt_user->password))
                     return response(['message' => 'Sign In failed!! Incorrect Credentials', 'type' => 'error'], 422);

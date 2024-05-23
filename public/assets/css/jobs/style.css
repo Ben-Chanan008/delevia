@@ -1,19 +1,23 @@
 .search-bar {
-  background-color: #f4f4f4; }
+  background-color: #f4f4f4;
+}
 
 .tag {
   background-color: #000000;
   border-radius: 30px;
   padding: 0 10px;
-  color: #fff; }
+  color: #fff;
+}
 
 .jobs {
-  cursor: pointer; }
-  .jobs .job-title {
-    overflow: hidden;
-    text-wrap: none;
-    width: 167px;
-    text-overflow: ellipsis; }
+  cursor: pointer;
+}
+.jobs .job-title {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 167px;
+  text-overflow: ellipsis;
+}
 
 .jobs-user-icon {
   height: 200px !important;
@@ -21,23 +25,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%; }
+  border-radius: 50%;
+}
 
 .ellipsis {
   overflow: hidden;
   white-space: nowrap;
   width: 167px;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+}
 
 .active > .page-link {
   background-color: var(--bs-primary-rgb) !important;
-  color: #ffff; }
+  color: white;
+}
 
 .page-link {
   color: #000;
-  border: 1px solid #ccc !important; }
+  border: 1px solid #ccc !important;
+}
 
 .vh-75 {
-  height: 75vh !important; }
-
-/*# sourceMappingURL=style.css.map */
+  height: 75vh !important;
+}/*# sourceMappingURL=style.css.map */

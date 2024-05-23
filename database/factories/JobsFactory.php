@@ -17,18 +17,18 @@ class JobsFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 8,
+            'user_id' => 2,
             'title' => fake()->text(10),
-            'company_id' => 2,
             'tags' => 'random,random',
-            'location' => $this->faker->city(),
+            'company_id' => 1,
             'description' => $this->faker->text(120),
+            'degree_req' => 'Harvard Degree',
             'experience' => 'No experience',
             'salary' => $this->faker->randomFloat(2, 1, 15),
             'rate' => '/hr',
+            'currency' => 1,
             'job_type' => 'on site',
-            'degree_req' => 'Harvard Degree',
-            'currency' => 1
+            'location' => $this->faker->city(),
         ];
     }
 }

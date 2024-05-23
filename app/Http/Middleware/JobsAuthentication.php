@@ -20,7 +20,6 @@ class JobsAuthentication
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         if ($request->route('user') && !$request->route('job')) {
             $user = Auth::id();
             $owner = $request->route('user');
