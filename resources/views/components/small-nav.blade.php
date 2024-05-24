@@ -1,25 +1,28 @@
-@php use App\Http\Controllers\UserController;use Illuminate\Support\Facades\Auth; @endphp
-<nav class="bg-white container-fluid mega-navbar">
-    <div class="d-flex justify-content-around p-3 align-items-center">
-        <a href="/" class="nav-brand text-black text-decoration-none">
-            <h3 class="fw-bold site-text-primary">DELEVIA</h3>
-        </a>
-        <ul class="list-unstyled d-lg-flex d-none">
-            <a href="{{route('home')}}" class="px-3 text-decoration-none text-black">
-                <li class="list-unstyled">Home</li>
+@php use App\Http\Controllers\UserController; @endphp
+<nav class="navbar fixed-top">
+  <div class="container-fluid">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold site-text-primary" id="offcanvasNavbarLabel">DELEVIA</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+         <ul class="list-unstyled d-flex flex-column">
+            <a href="{{route('home')}}" class="px-3 text-decoration-none text-black mb-3">
+                <li class="list-unstyled"><i class="far fa-home me-2"></i> Home</li>
             </a>
-            <a href="{{route('about')}}" class="px-3 text-decoration-none text-black">
-                <li class="list-unstyled">About</li>
+            <a href="{{route('about')}}" class="px-3 text-decoration-none text-black mb-3">
+                <li class="list-unstyled"><i class="far fa-address-card me-2"></i> About</li>
             </a>
-            <a href="{{route('services')}}" class="px-3 text-decoration-none text-black">
-                <li class="list-unstyled">Services</li>
+            <a href="{{route('services')}}" class="px-3 text-decoration-none text-black mb-3">
+                <li class="list-unstyled"><i class="far fa-bell-concierge me-2"></i> Services</li>
             </a>
-            <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black">
-                <li class="list-unstyled">Contact</li>
+            <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black mb-3">
+                <li class="list-unstyled"><i class="far fa-folder-user me-2"></i> Contact</li>
             </a>
         </ul>
         @if(Auth::check())
-            <div class="dropdown d-lg-block d-none">
+            <div class="dropdown">
                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="d-flex ">
                         <div class="user-icon shadow me-3">
@@ -59,13 +62,9 @@
             </div>
         @endif
         @unless(Auth::check())
-            <a href="{{route('login')}}" class="btn site-primary text-white px-5 py-2 btn-scale d-lg-block d-none">Sign In</a>
+            <a href="{{route('login')}}" class="btn site-primary text-white px-5 py-2 btn-scale">Sign In</a>
         @endunless
-        <a href="{{route('contact')}}" class="px-3 text-decoration-none text-black d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <li class="list-unstyled">
-                <i class="far fa-bars"></i>
-            </li>
-        </a>
+      </div>
     </div>
+  </div>
 </nav>
-<x-small-nav />

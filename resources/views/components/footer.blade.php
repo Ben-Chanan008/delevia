@@ -3,7 +3,7 @@
         <h3 class="text-center text-white mb-5 fw-bold">DELEVIA</h3>
     </div>
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 mb-lg-0 mb-3">
             <div class="d-flex flex-column">
                 <span class="h3 fw-bold     text-white">Delevia</span>
                 <p class="mt-4 text-white">Delevia is a technology company that empowers businesses with cutting edge solutions that makes them stay ahead in the evolving digital landscape. </p>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-lg-center">
                 <h3 class="text-white fw-bold">QUICK LINKS</h3>
                 <ul class="list-unstyled">
                     <a class="text-decoration-none text-white" href="home"><li class="mb-3">Home</li></a>

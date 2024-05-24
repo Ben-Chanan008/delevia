@@ -32,16 +32,16 @@
                 <div class="px-3 icon">
                     <i class="fab fa-microsoft text-black fa-3x"></i>
                 </div>
-                <div class="px-3 icon">
+                <div class="px-3 icon d-lg-block d-none">
                     <i class="fab fa-google text-black fa-3x"></i>
                 </div>
-                <div class="px-3 icon">
+                <div class="px-3 icon d-lg-block d-none">
                     <i class="fab fa-amazon text-black fa-3x"></i>
                 </div>
-                <div class="px-3 icon">
+                <div class="px-3 icon d-lg-block d-none">
                     <i class="fab fa-instagram text-black fa-3x"></i>
                 </div>
-                <div class="px-3 icon">
+                <div class="px-3 icon d-lg-block d-none">
                     <i class="fab fa-twitch text-black fa-3x"></i>
                 </div>
             </div>
@@ -148,193 +148,50 @@
             <div class="owl-carousel" id="owl-two">
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
-                        <i class="far fa-user fa-10x"></i>
+                        <i class="d-lg-block d-none far fa-user fa-10x"></i>
                     </div>
                     <div class="col-lg-6 text-white">
                         <h1 class="fw-bold">Samuel Oshinga</h1>
                         <span>CEO - FRONT END TEAM</span>
                         <div class="d-flex flex-column w-75">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p class="d-lg-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
                         </div>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
-                        <i class="far fa-user fa-10x"></i>
+                        <i class="d-lg-block d-none far fa-user fa-10x"></i>
                     </div>
                     <div class="col-lg-6 text-white">
                         <h1 class="fw-bold">Benchanan Idehen</h1>
                         <span>CEO - FRONT END TEAM</span>
                         <div class="d-flex flex-column w-75">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p class="d-lg-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
                         </div>
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center align-items-center">
                     <div class="col-lg-6 d-flex justify-content-center align-items-center h-100">
-                        <i class="far fa-user fa-10x"></i>
+                        <i class="d-lg-block d-none far fa-user fa-10x"></i>
                     </div>
                     <div class="col-lg-6 text-white">
                         <h1 class="fw-bold">Immanuel Oshinga</h1>
                         <span>CEO - FRONT END TEAM</span>
                         <div class="d-flex flex-column w-75">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
+                            <p class="d-lg-block d-none">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet aperiam autem ea, earum fuga minus modi molestiae quia quod sapiente soluta voluptatum? Ad architecto delectus deserunt dolores ex facilis illum impedit itaque maxime modi mollitia necessitatibus optio quibusdam recusandae sit soluta, sunt temporibus tenetur unde vitae. Architecto molestiae, quod.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="plans" class="mt-5">
-        <h2 class="text-center site-text-primary fw-bold">Delevia Pro</h2>
-        <p class="text-center">Go pro and unlock the full potential of <span class="site-text-primary">Delevia</span></p>
-        <div class="container mt-4">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card h-100 p-5 border-0 bg-white shadow rounded-4">
-                        <p class="h2 text-center fw-bold site-text-primary">Delevia Elite</p>
-                        <div class="mt-3">
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="site-text-primary text-center fs-2">$24.99/<span class="fs-6">month</span></p>
-                            <div class="d-flex">
-                                <button class="btn mx-auto btn-primary px-5">Try Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 p-5 border-0 bg-white shadow rounded-4">
-                        <p class="h2 text-center fw-bold site-text-primary">Delevia Free</p>
-                        <div class="mt-3">
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="site-text-primary text-center fs-2">Free</p>
-                            <div class="d-flex">
-                                <button class="btn mx-auto btn-primary px-5">Try Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 p-5 border-0 bg-white shadow rounded-4">
-                        <p class="h2 text-center fw-bold site-text-primary">Delevia Pro</p>
-                        <div class="mt-3">
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                            <div class="mb-3">
-                                <i class="far fa-times text-danger me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet.</span>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <p class="site-text-primary text-center fs-2">$19.99/<span class="fs-6">month</span></p>
-                            <div class="d-flex">
-                                <button class="btn mx-auto btn-primary px-5">Try Now</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <x-plans />
     @push('scripts')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="{{asset('assets/js/main.js')}}"></script>
     @endpush
     <x-footer />
 </x-base>

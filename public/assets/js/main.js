@@ -100,19 +100,19 @@ if (deleteBtn) {
                 ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/delete/${jobId}`;
 
             deleteBtn.addEventListener("click", (e) => {
-                console.log(jobId);
-                fetch(ROUTE)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        closeModalBtn.click();
-                        msgShow({
-                            message: data.message,
-                            type: data.type,
-                            redirect: data.redirect ?? null,
-                            mode: "light",
-                            duration: 90000000,
-                        });
-                    });
+                console.log(closeModalBtn);
+                closeModalBtn.click();
+                // fetch(ROUTE)
+                //     .then((res) => res.json())
+                //     .then((data) => {
+                //         msgShow({
+                //             message: data.message,
+                //             type: data.type,
+                //             redirect: data.redirect ?? null,
+                //             mode: "light",
+                //             duration: 90000000,
+                //         });
+                //     });
             });
         });
     });

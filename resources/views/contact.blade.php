@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6 mt-5">
                 <div class="w-75 h-100">
-                    <div class="d-flex hero rounded-top-3 fs-5 h-75 p-5 contact-card flex-column position-relative">
+                    <div class="d-lg-flex d-none hero rounded-top-3 fs-5 h-75 p-5 contact-card flex-column position-relative">
 {{--                        <div class="overlay position-absolute top-0 start-0 bottom-0 end-0"></div>--}}
                         <div class="text-white d-flex align-items-center">
                             <i class="far fa-phone fa-2x me-4"></i>

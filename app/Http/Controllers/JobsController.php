@@ -100,6 +100,7 @@ class JobsController extends Controller
     public function delete_job(Request $request, User $user, Jobs $job)
     {
         try{
+            dd($job);
             $job->delete();
             return response(['type' => 'success', 'message' => 'Job Listing has been deleted!', 'redirect' => 'reload'], 200);
         } catch (\Exception $e){

@@ -216,6 +216,7 @@ class Step {
 
                 label = label.charAt(0).toUpperCase() + label.slice(1);
 
+                console.log(label);
                 this.validationOptions.forEach((options) => {
                     if (
                         !options.isValid(input) &&
@@ -232,6 +233,7 @@ class Step {
                             msg.innerHTML = "";
                             this.errorBag.registerForm = { valid: true };
                             formError = true;
+                            console.log(this.errorBag);
                         }
                     }
                 });

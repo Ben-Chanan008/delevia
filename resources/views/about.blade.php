@@ -11,7 +11,7 @@
     <section id="statements" class="container">
         <div class="row">
             <div class="col-lg-6 mb-lg-0 mb-3">
-                <div class="mission">
+                <div class="mission d-lg-block d-flex justify-content-center">
                     <div class="card p-4 bg-white rounded-4 border-0 shadow w-75">
                         <div class="mb-3">
                             <i class="far fa-briefcase fa-2x mb-3 site-text-primary"></i>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-lg-6 mb-lg-0 mb-3">
-                <div class="vision">
+                <div class="vision d-lg-block d-flex justify-content-center">
                     <div class="card p-4 bg-white rounded-4 border-0 shadow w-75">
                         <div class="mb-3">
                             <i class="far fa-glasses mb-3 fa-2x site-text-primary"></i>
@@ -40,7 +40,9 @@
             <p class="text-center">This is what <span class="site-text-primary">Delevia</span> does</p>
         </div>
         <div class="container">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut eveniet illo iure quaerat reiciendis tempore, voluptatum! Assumenda atque consequuntur, dolores doloribus eius laudantium magni numquam odio porro, possimus, rem temporibus? At autem dolores eaque eum expedita facilis harum nisi odio odit officiis reiciendis repudiandae sed, sequi, temporibus veritatis. A ab aliquam architecto ea labore porro repudiandae soluta. A animi asperiores consequuntur, corporis dicta dolorum ea est hic inventore iusto maxime molestias, mollitia nostrum numquam porro praesentium quam reprehenderit soluta vel velit. Cupiditate, repudiandae, sint. A animi eligendi expedita libero minus neque nobis repudiandae vero vitae voluptatibus. Consequatur, quae voluptas?
+            <p class="text-center text-lg-start">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut eveniet illo iure quaerat reiciendis tempore, voluptatum! Assumenda atque consequuntur, dolores doloribus eius laudantium magni numquam odio porro, possimus, rem temporibus? At autem dolores eaque eum expedita facilis harum nisi odio odit officiis reiciendis repudiandae sed, sequi, temporibus veritatis. A ab aliquam architecto ea labore porro repudiandae soluta. A animi asperiores consequuntur, corporis dicta dolorum ea est hic inventore iusto maxime molestias, mollitia nostrum numquam porro praesentium quam reprehenderit soluta vel velit. Cupiditate, repudiandae, sint. A animi eligendi expedita libero minus neque nobis repudiandae vero vitae voluptatibus. Consequatur, quae voluptas?
+            </p>
         </div>
     </section>
     <section id="what-we-are" class="mt-5">
@@ -48,9 +50,9 @@
             <p class="text-center site-text-primary h2 fw-bold">WHO WE ARE!</p>
         </div>
         <div class="container">
-            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut eveniet illo iure quaerat reiciendis tempore, voluptatum! Assumenda atque consequuntur, dolores doloribus eius laudantium magni numquam odio porro, possimus, rem temporibus? At autem dolores eaque eum expedita facilis harum nisi odio odit officiis reiciendis repudiandae sed, sequi, temporibus veritatis. A ab
+            <p class="text-lg-start text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aut eveniet illo iure quaerat reiciendis tempore, voluptatum! Assumenda atque consequuntur, dolores doloribus eius laudantium magni numquam odio porro, possimus, rem temporibus? At autem dolores eaque eum expedita facilis harum nisi odio odit officiis reiciendis repudiandae sed, sequi, temporibus veritatis. A ab
             aliquam architecto ea labore porro repudiandae soluta. A animi asperiores consequuntur, corporis dicta dolorum ea est hic inventore iusto maxime molestias, mollitia nostrum numquam porro praesentium quam reprehenderit soluta vel velit. Cupiditate, repudiandae, sint. A animi eligendi expedita libero minus neque nobis repudiandae vero vitae voluptatibus. Consequatur, quae
-                  voluptas?</span>
+                  voluptas?</p>
         </div>
     </section>
     <section id="try-delevia" class="mt-5 p-5">

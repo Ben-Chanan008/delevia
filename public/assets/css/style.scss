@@ -71,6 +71,9 @@ body {
 }
 
 .w-500 {
+  @media screen and (max-width: 576px){
+    width: 300px !important;
+  }
   width: 500px !important;
 }
 .w-700 {
@@ -81,6 +84,9 @@ body {
 }
 .w-900 {
   width: 900px !important;
+  @media screen and (max-width: 576px){
+    width: 300px !important;
+  }
 }
 
 .btn-scale {
@@ -177,4 +183,10 @@ body {
 
 #try-delevia{
     background-color: #f4f4f4;
+}
+
+.shadow-lg-none{
+  @media screen and (max-width: 992px) {
+    box-shadow: none !important;
+  }
 }
