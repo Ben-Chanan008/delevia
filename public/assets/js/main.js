@@ -94,25 +94,23 @@ if (deleteBtn) {
         showDelete = [...document.querySelectorAll(".open-delete")];
 
     showDelete.forEach((btn) => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", (e) => {
             let loggedInUser = btn.getAttribute("user_id"),
                 jobId = btn.getAttribute("job_id"),
                 ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/delete/${jobId}`;
 
             deleteBtn.addEventListener("click", (e) => {
-                console.log(closeModalBtn);
-                closeModalBtn.click();
-                // fetch(ROUTE)
-                //     .then((res) => res.json())
-                //     .then((data) => {
-                //         msgShow({
-                //             message: data.message,
-                //             type: data.type,
-                //             redirect: data.redirect ?? null,
-                //             mode: "light",
-                //             duration: 90000000,
-                //         });
-                //     });
+                fetch(ROUTE)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        $("#delete-modal").modal("hide");
+                        msgShow({
+                            message: data.message,
+                            type: data.type,
+                            redirect: data.redirect ?? null,
+                            mode: "light",
+                        });
+                    });
             });
         });
     });

@@ -4,7 +4,7 @@
     <x-navbar />
     <h1 class="text-center site-text-primary fw-bold mt-3">POST A JOB!</h1>
     <div class="d-flex flex-column h-75 justify-content-center align-items-center">
-        <div class="card border-0 shadow p-5">
+        <div class="card border-0 shadow p-5 mt-lg-0 mt-5">
             <div class="row w-900">
                 <div class="col-lg-6">
                     <div class="d-flex h-100 justify-content-center w-100 flex-column">

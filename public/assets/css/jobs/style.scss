@@ -10,12 +10,24 @@
 }
 
 .jobs{
+    @media screen and (min-width: 1148px) {
+        font-size: 13px !important;
+    }
+    @media screen and (min-width: 1440px) {
+        font-size: medium !important;
+    }
     cursor: pointer;
     .job-title{
         overflow: hidden;
         white-space: nowrap;
         width: 167px;
         text-overflow: ellipsis;
+        @media screen and (min-width: 1148px) {
+            font-size: 13px !important;
+        }
+        @media screen and (min-width: 1440px) {
+            font-size: 20px !important;
+        }    
     }
 }
 .jobs-user-icon{

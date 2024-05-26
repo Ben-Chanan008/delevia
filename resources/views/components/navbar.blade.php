@@ -47,7 +47,7 @@
                         </div>
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-building me-3"></i>
-                            <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Create Company</a>
+                            <a href="{{route('jobs.show-create-company', [Auth::id()])}}" class="text-black text-decoration-none">Create Company</a>
                         </div>
                     @else
                         <div class="d-flex ms-3 p-2 align-items-center">

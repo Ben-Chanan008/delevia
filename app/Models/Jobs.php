@@ -22,6 +22,7 @@ class Jobs extends Model
         'date_of_post',
         'location',
         'description',
+        'degree_req',
         'experience',
         'salary',
         'rate',
@@ -48,5 +49,12 @@ class Jobs extends Model
     public function user_applicants(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'applicants', 'job_id')->using(Applicants::class);
+    }
+
+    public function scopeFilter($query, array $filters) {
+        // dd($filters['search']);
+        if($filters['search'] ?? false)
+            $query->where('title', 'like', '%' . request('search') . '%')->orWhere('description', 'like', '%' . request('search') . '%')->orWhere('tags', 'like', '%' . request('search') . '%')->orWhere('degree_req', 'like', '%' . request('search') . '%')->orWhere('experience', 'like', '%' . request('search') . '%')->orWhere('location', 'like', '%' . request('search') . '%');
+    
     }
 }

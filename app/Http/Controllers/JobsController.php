@@ -29,7 +29,7 @@ class JobsController extends Controller
         else{
             $trashed = true;
         }
-        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->paginate(10), 'trashed' => $trashed]);
+        return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->latest()->filter(request(['search']))->paginate(10), 'trashed' => $trashed]);
     }
 
     public function create(Request $request, User $user)
@@ -65,16 +65,16 @@ class JobsController extends Controller
             Jobs::create([
                 'user_id' => $user->id,
                 'title' => $fields['job_title'],
-                'company_id' => $fields['company'],
                 'tags' => $fields['tags'],
-                'location' => $fields['location'],
+                'company_id' => $fields['company'],
                 'description' => $fields['description'],
+                'degree_req' => $fields['degree_req'],
                 'experience' => $fields['experience'],
                 'salary' => $fields['salary'],
                 'rate' => $fields['rate'],
+                'currency' => $fields['currency'],
                 'job_type' => $fields['job_type'],
-                'degree_req' => $fields['degree_req'],
-                'currency' => $fields['currency']
+                'location' => $fields['location']
             ]);
 
             return response(['message' => 'Job created successfully!', 'type' => 'success', 'redirect' => 'jobs/giver'], 200);
@@ -100,7 +100,6 @@ class JobsController extends Controller
     public function delete_job(Request $request, User $user, Jobs $job)
     {
         try{
-            dd($job);
             $job->delete();
             return response(['type' => 'success', 'message' => 'Job Listing has been deleted!', 'redirect' => 'reload'], 200);
         } catch (\Exception $e){
@@ -146,4 +145,10 @@ class JobsController extends Controller
     {
         return view('jobs.giver.view-applicant', ['applicant' => $applicant]);
     }
+
+    public function show_create_company(Request $request, User $user){
+        return view('jobs.giver.create-company');
+    }
+
+    public function create_company(Request $request, User $user){}
 }

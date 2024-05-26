@@ -15,12 +15,14 @@
     </div>
     <div class="container">
         <div class="d-flex justify-content-center align-items-center">
+        <form action="{{route('jobs.giver')}}" class="w-100">
             <div class="search-bar d-flex w-100 py-2 rounded-3">
-                <button class="btn">
+                <button class="btn" type="submit">
                     <i class="far fa-magnifying-glass"></i>
                 </button>
-                <input type="text" class="bg-transparent form-control border-0 w-100" placeholder="Search..."/>
+                <input type="text" name="search" class="bg-transparent form-control border-0 w-100" placeholder="Search..."/>
             </div>
+        </form>
         </div>
     </div>
     <div class="container mt-5">
@@ -107,5 +109,6 @@
     </div>
     @push('scripts')
         <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @endpush
 </x-base>

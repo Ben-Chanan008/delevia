@@ -210,6 +210,7 @@ class Step {
                 msg = formGroup.querySelector("p.error-msg"),
                 label,
                 formError;
+            console.log(input);
 
             if (input) {
                 label = input.getAttribute("name");
@@ -255,11 +256,11 @@ class Step {
             isValid: (input) => input.value.trim() !== "",
             msg: (label) => `${label} is not valid`,
         },
-        {
-            attribute: "no-validate",
-            isValid: (input) => true,
-            msg: (label) => `${label} is not valid`,
-        },
+        // {
+        //     attribute: "no-validate",
+        //     isValid: (input) => true,
+        //     msg: (label) => `${label} is not valid`,
+        // },
         {
             attribute: "email",
             isValid: (input) => {
