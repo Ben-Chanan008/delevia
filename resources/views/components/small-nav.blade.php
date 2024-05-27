@@ -7,6 +7,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+        <div class="d-flex mb-5">
+            <div class="user-icon shadow me-3">
+                <i class="far fa-user fw-bold px-2"></i>
+            </div>
+            <div>
+                <p class="mb-0 text-start">Hello,</p>
+                <p class="fw-bold">{{Auth::user()->name}}</p>
+            </div>
+        </div>
          <ul class="list-unstyled d-flex flex-column">
             <a href="{{route('home')}}" class="px-3 text-decoration-none text-black mb-3">
                 <li class="list-unstyled"><i class="far fa-home me-2"></i> Home</li>
@@ -23,18 +32,6 @@
         </ul>
         @if(Auth::check())
             <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="d-flex ">
-                        <div class="user-icon shadow me-3">
-                            <i class="far fa-user fw-bold px-2"></i>
-                        </div>
-                        <div>
-                            <p class="mb-0 text-start">Hello,</p>
-                            <p class="fw-bold">{{Auth::user()->name}}</p>
-                        </div>
-                    </div>
-                </button>
-                <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
                     <div class="d-flex ms-3 p-2 align-items-center">
                         <i class="far fa-power-off me-3"></i>
                         <a href="{{route('logout')}}" class="text-black text-decoration-none">Logout</a>
@@ -50,7 +47,11 @@
                         </div>
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-building me-3"></i>
-                            <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Create Company</a>
+                            <a href="{{route('jobs.show-create-company', [Auth::id()])}}" class="text-black text-decoration-none">Create Company</a>
+                        </div>
+                         <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-business-time me-3"></i>
+                            <a href="{{route('jobs.create', [Auth::id()])}}" class="text-black text-decoration-none">Post Job</a>
                         </div>
                     @else
                         <div class="d-flex ms-3 p-2 align-items-center">
