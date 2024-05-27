@@ -111,7 +111,7 @@
                             </div>
                             <div class="mb-3">
                                 <i class="far fa-check text-success me-2"></i>
-                                <span class="">Lorem ipsum dolor sit amet</span>
+                                <span class="">Lorem ipsum dolor sit amet.</span>
                             </div>
                             <div class="mb-3">
                                 <i class="far fa-check text-success me-2"></i>
