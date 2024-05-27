@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('sub_module_id')->references('id')->on('sub_modules')->cascadeOnDelete();
             $table->string('route');
             $table->string('description');
+            $table->boolean('has_parameter');
+            $table->string('parameter')->nullable();
             $table->timestamps();
         });
     }

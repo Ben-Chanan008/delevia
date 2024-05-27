@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\Currencies;
 use App\Models\Jobs;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -150,5 +151,23 @@ class JobsController extends Controller
         return view('jobs.giver.create-company');
     }
 
-    public function create_company(Request $request, User $user){}
+    public function create_company(Request $request, User $user){
+        $fields = $request->validate([
+            'company_name' => 'required',
+            'company_logo' => 'required',
+        ]);
+
+        $fields['company_logo'] = $request->file('company_logo')->store('logos', 'public');
+
+        try{
+            Company::create([
+                'user_id' => Auth::id(),
+                'company_name' => $fields['company_name'],
+                'company_logo' => $fields['company_logo']
+            ]);
+            return response(['message' => 'Company created successfully!', 'type' => 'success', 'redirect' => '/jobs/giver'], 200);
+        } catch(Exception $e){
+            return response(['type' => 'error', 'message' => 'An error occurred!!', 'error' => $e->getMessage()], 500);
+        }
+    }
 }

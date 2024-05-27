@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group mt-3 step w-100">
                                 <label class="w-100">
-                                    <select name="user_type" class="form-select w-100">
+                                    <select name="user_type" id="job-select" class="form-select w-100">
                                         <option readonly selected>Select User Type</option>
                                         <option value="Hirer">Hirer</option>
                                         <option value="Job Seeker">Job Seeker</option>

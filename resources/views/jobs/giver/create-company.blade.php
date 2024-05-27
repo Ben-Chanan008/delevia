@@ -16,7 +16,7 @@
 							<p class="error-msg text-danger"></p>
 						</div>
 						<div class="mb-3 step form-group w-100">
-							<input type="file" name="company_logo" class="form-control p-3 w-100 position-relative" placeholder="Company Logo" validate="file" />
+							<input type="file" name="company_logo" id="logo-select" class="form-control p-3 w-100 position-relative" placeholder="Company Logo" accept="image/png, image/jpeg, imgage/jpg"/>
 							<label class="floating-label">Company Logo</label>
 							<p class="error-msg text-danger"></p>
 							<div class="d-flex justify-content-end">
@@ -25,28 +25,6 @@
 						</div>
 					</form>
 				</div>
-                {{-- <div class="d-flex justify-content-between mb-4">
-                    <a href="{{route('forgot.password')}}" class="text-decoration-none site-text-primary">Forgot Password?</a>
-                    <a href="{{route('contact')}}" class="text-decoration-none site-text-primary">Get Help!</a>
-                </div> --}}
-				{{-- <div class="w-100">
-					<div class="mb-3 d-flex align-items-center">
-						<i class="far fa-info-circle me-3"></i>
-						<span>Sign in to your account</span>
-					</div>
-					<div class="mb-3 d-flex align-items-center">
-						<i class="far fa-info-circle me-3"></i>
-						<span>All passwords are encrypted</span>
-					</div>
-					<div class="mb-3 d-flex align-items-center">
-						<i class="far fa-info-circle me-3"></i>
-						<span>Information is kept safe</span>
-					</div>
-					<div class="mb-3 d-flex align-items-center">
-						<i class="far fa-info-circle me-3"></i>
-						<span>Don't have an account? <a class="text-decoration-none site-text-primary" href="{{route('register')}}">Register</a></span>
-					</div> --}}
-				</div>
 			</div>
 		</div>
 	</div>
@@ -54,7 +32,7 @@
         <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
     	<script src="{{asset('assets/js/step.js')}}"></script>
 		<script defer>
-			const step = new Step('#create-company', ['btn', 'login', 'p-3'], 'user/{{Auth::id()}}/create-company', false);
+			const step = new Step('#create-company', ['btn', 'login', 'p-3'], 'jobs/giver/{{Auth::id()}}/create-company', false);
 		</script>
 	@endpush
 </x-base>

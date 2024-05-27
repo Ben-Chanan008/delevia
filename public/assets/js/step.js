@@ -181,25 +181,44 @@ class Step {
             label = input.getAttribute("placeholder"),
             formError;
 
-        this.validationOptions.forEach((options) => {
-            if (
-                !options.isValid(input) &&
-                input.getAttribute("validate").toLowerCase() ===
-                    options.attribute
-            ) {
-                msg.innerHTML = options.msg(label);
-                this.errorBag["registerForm"] = {};
+        if (input.getAttribute("type") !== "file") {
+            this.validationOptions.forEach((options) => {
+                if (
+                    !options.isValid(input) &&
+                    input.getAttribute("validate").toLowerCase() ===
+                        options.attribute
+                ) {
+                    msg.innerHTML = options.msg(label);
+                    this.errorBag["registerForm"] = {};
 
-                this.errorBag.registerForm = { valid: false };
-                formError = false;
-            } else {
-                if (options.isValid(input)) {
-                    msg.innerHTML = "";
-                    this.errorBag.registerForm = { valid: true };
-                    formError = true;
+                    this.errorBag.registerForm = { valid: false };
+                    formError = false;
+                } else {
+                    if (options.isValid(input)) {
+                        msg.innerHTML = "";
+                        this.errorBag.registerForm = { valid: true };
+                        formError = true;
+                    }
+                }
+            });
+        } else {
+            const selectInput = document.getElementById("job-select");
+            const selectFile = document.getElementById("logo-select");
+
+            if (selectInput) {
+                if (selectInput.value === "") {
+                    formError = false;
+                    msg.innerHTML = "Please select a job type!";
                 }
             }
-        });
+
+            if (selectFile) {
+                if (selectFile.value === "") {
+                    formError = false;
+                    msg.innerHTML = "Please select a logo!";
+                }
+            }
+        }
         return formError;
     }
 
@@ -256,11 +275,6 @@ class Step {
             isValid: (input) => input.value.trim() !== "",
             msg: (label) => `${label} is not valid`,
         },
-        // {
-        //     attribute: "no-validate",
-        //     isValid: (input) => true,
-        //     msg: (label) => `${label} is not valid`,
-        // },
         {
             attribute: "email",
             isValid: (input) => {

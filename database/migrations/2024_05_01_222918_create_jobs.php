@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('job_type');
             $table->string('needed_skills');
             $table->string('location');
-            $table->date('date_of_post');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

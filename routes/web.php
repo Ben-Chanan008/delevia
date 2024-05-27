@@ -32,8 +32,8 @@ Route::controller(JobsController::class)->group(function () {
             Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
             Route::get('/giver','giver')->name('jobs.giver')->middleware('auth');
             Route::middleware([JobsAuthentication::class])->group(function () {
-                Route::post('/giver/{user}/create-company','create_company')->name('jobs.create-company')->middleware('auth');
                 Route::get('/giver/{user}/create-company','show_create_company')->name('jobs.show-create-company')->middleware('auth');
+                Route::post('/giver/{user}/create-company','create_company')->name('jobs.create-company')->middleware('auth');
                 Route::get('/giver/{user}/create','show_create')->name('jobs.create')->middleware('auth');
                 Route::post('/giver/{user}/store','create')->name('jobs.store')->middleware('auth');
                 Route::get('/giver/{job}/applicants', 'job_applicants')->name('jobs.view-applicants')->middleware('auth');
