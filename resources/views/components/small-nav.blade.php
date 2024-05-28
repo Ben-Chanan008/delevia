@@ -7,15 +7,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <div class="d-flex mb-5">
-            <div class="user-icon shadow me-3">
-                <i class="far fa-user fw-bold px-2"></i>
+        @unless(!Auth::check())
+            <div class="d-flex mb-5">
+                <div class="user-icon shadow me-3">
+                    <i class="far fa-user fw-bold px-2"></i>
+                </div>
+                <div>
+                    <p class="mb-0 text-start">Hello,</p>
+                    <p class="fw-bold">{{Auth::user()->name}}</p>
+                </div>
             </div>
-            <div>
-                <p class="mb-0 text-start">Hello,</p>
-                <p class="fw-bold">{{Auth::user()->name}}</p>
-            </div>
-        </div>
+        @endunless
          <ul class="list-unstyled d-flex flex-column">
             <a href="{{route('home')}}" class="px-3 text-decoration-none text-black mb-3">
                 <li class="list-unstyled"><i class="far fa-home me-2"></i> Home</li>

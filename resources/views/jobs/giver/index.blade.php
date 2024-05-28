@@ -32,7 +32,7 @@
                     <div class="d-flex">
                         <div class="me-2">
                             <div class="p-2 rounded-4 bg-secondary">
-                                <img src="{{asset('assets/images/ask-me.svg')}}" class="img-fluid" alt="img" height="100px" width="200px"/>
+                                <img src="{{$job->company->company_logo ? asset('storage/' . $job->company->company_logo) : asset('assets/images/ask-me.svg')}}" class="img-fluid logo-img" alt="img" height="100px" width="200px"/>
                             </div>
                             <div class="d-flex">
                                 <button type="button" class="p-0 btn bg-danger text-white px-3 w-50 mt-2 me-2 open-delete rounded-pill" data-bs-toggle="modal" data-bs-target="#delete-modal" user_id="{{Auth::id()}}" job_id="{{$job->id}}">

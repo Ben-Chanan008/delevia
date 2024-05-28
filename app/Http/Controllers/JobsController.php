@@ -78,7 +78,7 @@ class JobsController extends Controller
                 'location' => $fields['location']
             ]);
 
-            return response(['message' => 'Job created successfully!', 'type' => 'success', 'redirect' => 'jobs/giver'], 200);
+            return response(['message' => 'Job created successfully!', 'type' => 'success', 'redirect' => '/jobs/giver'], 200);
 
         }catch (\Exception $e){
             return response(['message' => $e->getMessage(), 'type' => 'error'], 500);

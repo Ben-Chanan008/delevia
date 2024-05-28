@@ -12,7 +12,7 @@
 .jobs {
   cursor: pointer;
 }
-@media screen and (min-width: 1148px) {
+@media screen and (min-width: 1120px) {
   .jobs {
     font-size: 13px !important;
   }
@@ -22,13 +22,22 @@
     font-size: medium !important;
   }
 }
+.jobs .logo-img {
+  height: 161px !important;
+  border-radius: 1rem !important;
+}
+@media screen and (max-width: 576px) {
+  .jobs .logo-img {
+    height: 187px !important;
+  }
+}
 .jobs .job-title {
   overflow: hidden;
   white-space: nowrap;
   width: 167px;
   text-overflow: ellipsis;
 }
-@media screen and (min-width: 1148px) {
+@media screen and (min-width: 1120px) {
   .jobs .job-title {
     font-size: 13px !important;
   }
