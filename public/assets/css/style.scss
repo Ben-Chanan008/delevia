@@ -190,3 +190,7 @@ body {
     box-shadow: none !important;
   }
 }
+
+.border-site-primary{
+  border: 2px solid var(--bs-primary-rgb);
+}

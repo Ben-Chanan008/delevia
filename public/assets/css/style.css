@@ -193,4 +193,8 @@ body {
   .shadow-lg-none {
     box-shadow: none !important;
   }
+}
+
+.border-site-primary {
+  border: 2px solid var(--bs-primary-rgb);
 }/*# sourceMappingURL=style.css.map */

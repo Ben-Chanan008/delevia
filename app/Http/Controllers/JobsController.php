@@ -170,4 +170,8 @@ class JobsController extends Controller
             return response(['type' => 'error', 'message' => 'An error occurred!!', 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function view_companies(Request $request, User $user){
+        return view('jobs.giver.view-company', ['companies' => Company::where(['user_id' => Auth::id()])->get()]);
+    }
 }

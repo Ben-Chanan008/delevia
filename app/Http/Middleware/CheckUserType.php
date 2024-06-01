@@ -25,7 +25,7 @@ class CheckUserType
     {
         $user = User::find(Auth::user()->id);
         $user_role = $user->roles;
-        $flag = true;
+        $flag = false;
         $no_applicants = false;
 
         foreach ($user_role as $role) {
@@ -81,7 +81,6 @@ class CheckUserType
                             $route_val2 = route($route->route);
                             $routes[] = $route_val2;
                         }
-
                         foreach ($routes as $accessed_routes){
                             if($path === $accessed_routes){
                                 $flag = true;

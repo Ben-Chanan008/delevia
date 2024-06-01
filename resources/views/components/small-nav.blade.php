@@ -55,6 +55,10 @@
                             <i class="far fa-business-time me-3"></i>
                             <a href="{{route('jobs.create', [Auth::id()])}}" class="text-black text-decoration-none">Post Job</a>
                         </div>
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-buildings me-3"></i>
+                            <a href="{{route('jobs.view-companies', [Auth::id()])}}" class="text-black text-decoration-none">View companies</a>
+                        </div>
                     @else
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-business-time me-3"></i>

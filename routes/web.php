@@ -41,6 +41,7 @@ Route::controller(JobsController::class)->group(function () {
                 Route::post('/giver/{user}/edit/{job}', 'edit_job')->name('jobs.edit')->middleware('auth');
                 Route::get('/giver/{job}/applicants/{applicant}', 'show_application')->name('jobs.applicant')->middleware('auth');
                 Route::get('/giver/{user}/delete/{job}', 'delete_job')->name('jobs.delete')->middleware('auth');
+                Route::get('/giver/{user}/companies', 'view_companies')->name('jobs.view-companies')->middleware('auth');
             });
         });
     });
