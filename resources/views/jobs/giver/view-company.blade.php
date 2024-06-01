@@ -1,4 +1,7 @@
 <x-base title="My Companies">
+    @push('styles')
+        <link rel="stylesheet" href="{{asset('assets/css/jobs/style.css')}}">
+    @endpush
     <x-navbar />
     <div class="container">
          <div class="d-flex align-items-center">
@@ -19,11 +22,12 @@
                     </div>
                     <div class="d-flex justify-content-center align-items-start flex-column">
                         <p class="mb-0 fs-3 ms-4 fw-bold site-text-primary">{{$company->company_name}}</p>
+                        <a href="#" class="ms-4 text-decoration-none anchor-tag">Edit Company</a>
                     </div>
                 </div>   
                 <hr />
                 @empty
-                <p>No companies Yet</p>
+                <p class="fw-bold">No companies Yet</p>
             @endforelse
 
         </div>
