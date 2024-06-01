@@ -18,7 +18,7 @@
             @forelse($companies as $company)
                 <div class="d-flex mx-5">
                     <div class="me-2">
-                        <img src="{{asset('storage/' . $company->company_logo)}}" alt="logo" class="rounded-5" height="150px" width="150px"/>
+                        <img src="{{$company->company_logo ? asset('storage/' . $company->company_logo) : asset('assets/images/ask-me.svg')}}" alt="logo" class="rounded-5" height="150px" width="150px"/>
                     </div>
                     <div class="d-flex justify-content-center align-items-start flex-column">
                         <p class="mb-0 fs-3 ms-4 fw-bold site-text-primary">{{$company->company_name}}</p>

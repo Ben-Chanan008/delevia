@@ -40,7 +40,7 @@
                     </div>
                     <div class="d-flex ms-3 p-2 align-items-center">
                         <i class="far fa-user me-3"></i>
-                        <a href="{{route('logout')}}" class="text-black text-decoration-none">Profile</a>
+                        <a href="{{route('user.profile')}}" class="text-black text-decoration-none">Profile</a>
                     </div>
                     @if(UserController::checkUserRole())
                         <div class="d-flex ms-3 p-2 align-items-center">
