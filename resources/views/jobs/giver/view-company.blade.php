@@ -29,7 +29,6 @@
                 @empty
                 <p class="fw-bold">No companies Yet</p>
             @endforelse
-
         </div>
     </div>
 </x-base>
