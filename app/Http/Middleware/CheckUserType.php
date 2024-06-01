@@ -81,6 +81,9 @@ class CheckUserType
                             $route_val2 = route($route->route);
                             $routes[] = $route_val2;
                         }
+
+                        $this::expose($routes);
+
                         foreach ($routes as $accessed_routes){
                             if($path === $accessed_routes){
                                 $flag = true;

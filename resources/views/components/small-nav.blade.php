@@ -38,11 +38,11 @@
                         <i class="far fa-power-off me-3"></i>
                         <a href="{{route('logout')}}" class="text-black text-decoration-none">Logout</a>
                     </div>
-                    <div class="d-flex ms-3 p-2 align-items-center">
-                        <i class="far fa-user me-3"></i>
-                        <a href="{{route('user.profile', [Auth::id()])}}" class="text-black text-decoration-none">Profile</a>
-                    </div>
                     @if(UserController::checkUserRole())
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-user me-3"></i>
+                            <a href="{{route('giver.profile', [Auth::id()])}}" class="text-black text-decoration-none">Profile</a>
+                        </div>
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-gear me-3"></i>
                             <a href="{{route('jobs.giver')}}" class="text-black text-decoration-none">Manage Listings</a>
@@ -63,6 +63,10 @@
                         <div class="d-flex ms-3 p-2 align-items-center">
                             <i class="far fa-business-time me-3"></i>
                             <a href="{{route('jobs.seeker')}}" class="text-black text-decoration-none">View Jobs</a>
+                        </div>
+                        <div class="d-flex ms-3 p-2 align-items-center">
+                            <i class="far fa-user me-3"></i>
+                            <a href="{{route('seeker.profile', [Auth::id()])}}" class="text-black text-decoration-none">Profile</a>
                         </div>
                     @endif
                 </div>
