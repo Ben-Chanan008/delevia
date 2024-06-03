@@ -174,4 +174,8 @@ class JobsController extends Controller
     public function view_companies(Request $request, User $user){
         return view('jobs.giver.view-company', ['companies' => Company::where(['user_id' => Auth::id()])->get()]);
     }
+
+    public function profile(Request $request, User $user){
+        return view('partials.profile');
+    }
 }

@@ -28,6 +28,7 @@ Route::controller(UserController::class)->group(function () {
 
 Route::controller(JobsController::class)->group(function () {
     Route::middleware([CheckUserType::class])->group(function () {
+        Route::get('{user}/profile', 'profile')->name('user.profile')->middleware(['auth', 'profile.check']);
         Route::prefix('jobs')->group(function () {
             Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
             Route::get('/giver','giver')->name('jobs.giver')->middleware('auth');
@@ -42,8 +43,6 @@ Route::controller(JobsController::class)->group(function () {
                 Route::get('/giver/{job}/applicants/{applicant}', 'show_application')->name('jobs.applicant')->middleware('auth');
                 Route::get('/giver/{user}/delete/{job}', 'delete_job')->name('jobs.delete')->middleware('auth');
                 Route::get('/giver/{user}/companies', 'view_companies')->name('jobs.view-companies')->middleware('auth');
-                Route::get('/giver/{user}/profile', 'profile')->name('giver.profile')->middleware(['auth', 'profile.check']);
-                Route::get('/seeker/{user}/profile', 'profile')->name('seeker.profile')->middleware(['auth', 'profile.check']);
             });
         });
     });
