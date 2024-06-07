@@ -6,7 +6,9 @@ use App\Models\Applicants;
 use App\Models\Applications;
 use App\Models\Company;
 use App\Models\Currencies;
+use App\Models\GiverProfile;
 use App\Models\Jobs;
+use App\Models\SeekerProfile;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -176,6 +178,13 @@ class JobsController extends Controller
     }
 
     public function profile(Request $request, User $user){
-        return view('partials.profile');
+        $user = Auth::user();
+        // dd($user->user_key);
+        if(!$user->user_key)
+            $profile = SeekerProfile::where(['seeker_id' => $user->id])->get()->first();
+        else
+            $profile = GiverProfile::where(['giver_id' => $user->id])->get()->first();
+
+        return view('partials.profile', ['profile' => $profile]);
     }
 }

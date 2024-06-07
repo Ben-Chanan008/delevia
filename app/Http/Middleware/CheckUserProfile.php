@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckUserProfile
@@ -15,6 +16,15 @@ class CheckUserProfile
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        $logged_in_user = Auth::user();
+        $flag = false;
+        
+        if($logged_in_user->user_key)
+            $flag = true;
+
+        if(!$flag)
+            abort(403, 'Unuathorized Access');
+        else
+            return $next($request);
     }
 }

@@ -79,4 +79,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Company::class);
     }
+
+    public function seekers_profile(): HasMany
+    {
+        return $this->hasMany(SeekerProfile::class);
+    }
+
+    public function givers_profile(): HasMany
+    {
+        return $this->hasMany(GiverProfile::class);
+    }
 }

@@ -5,8 +5,8 @@
     <x-navbar />
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="profile-card d-flex flex-column justify-content-center rounded-4 shadow">
+            <div class="col-lg-4 d-flex">
+                <div class="profile-card mx-lg-0 mt-lg-0 mt-4 mx-auto d-flex flex-column justify-content-center rounded-4 shadow">
                     <div class="d-flex">
                         <div class="mx-auto rounded-circle mt-5 shadow profile-img">
                             <img src="{{asset('assets/images/black.jpeg')}}" alt="" class="rounded-circle"/>
@@ -20,14 +20,35 @@
                         <p class="text-center">{{Auth::user()->email}}</p>
                     </div>
                     <hr class="mx-3" />
-                    <div class="d-flex ms-3 mb-2 align-items-center">
-                        <i class="far fa-location-dot"></i>
-                        <span class="ms-2">Port Harcout, PH</span>
-                    </div>
-                    <div class="d-flex ms-3 align-items-center">
-                        <i class="far fa-user-tie"></i>
-                        <span class="ms-2">Teacher</span>
-                    </div>
+                    @if($profile->location)
+                        <div class="d-flex ms-3 mb-2 align-items-center">
+                            <i class="fad fa-location-dot"></i>
+                            <span class="ms-2">{{$profile->location}}</span>
+                        </div>
+                    @else
+                        <div class="d-flex align-items-center ms-3 mb-3 site-text-primary">
+                            <i class="far fa-pen"></i>
+                            <a href="#" class="ms-1 site-text-primary text-decoration-none">Add Location</a>
+                        </div>
+                    @endif
+                    @if(!Auth::user()->user_key)
+                        @if($profile->profession)
+                            <div class="d-flex ms-3 align-items-center">
+                                <i class="fad fa-user-tie"></i>
+                                <span class="ms-2">Teacher</span>
+                            </div>
+                        @else
+                            <div class="d-flex align-items-center ms-3 mb-3 site-text-primary">
+                                <i class="far fa-pen"></i>
+                                <a href="#" class="ms-1 site-text-primary text-decoration-none">Add Profession</a>
+                            </div>
+                        @endif    
+                    @else
+                        <div class="d-flex ms-3 align-items-center">
+                            <i class="fad fa-user-tie"></i>
+                            <span class="ms-2">Business Owner</span>
+                        </div>
+                    @endif
                     <hr class="mx-3" />
                     <div class="d-flex align-items-center ms-3 site-text-primary">
                         <i class="far fa-pen"></i>
@@ -35,9 +56,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col mt-5 mt-lg-0">
                 <h2 class="text-center site-text-primary fw-bold">ABOUT ME!</h2>
-                <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ullam animi libero cupiditate vero voluptatibus voluptate. Eos doloremque iste, fuga, accusantium quisquam voluptas velit natus eligendi porro excepturi earum maiores nobis dolorum corporis dolor, aliquid maxime libero dignissimos temporibus? Veniam perferendis est ipsum repellendus quibusdam necessitatibus quasi! Adipisci, ut, rerum fugiat consectetur in hic porro et magni recusandae voluptatibus quisquam! Nulla et dolores natus nostrum tempore quod totam hic labore illo voluptas non at quidem doloremque eligendi cupiditate aspernatur autem optio praesentium, ea porro veniam quae mollitia. Quasi, voluptate consequuntur culpa quibusdam, voluptas, esse fugit facilis optio aspernatur aut rerum.</p>
+                @if($profile->about)
+                    <p class="mt-5">{{$profile->about}}</p>
+                @else
+                    <div class="d-flex align-items-center ms-3 mb-3 site-text-primary">
+                        <i class="far fa-pen"></i>
+                        <a href="#" class="ms-1 site-text-primary text-decoration-none">Add About Me</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
