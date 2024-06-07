@@ -16,15 +16,15 @@ class CheckUserProfile
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $logged_in_user = Auth::user();
-        $flag = false;
+        // $logged_in_user = Auth::user();
+        // $flag = false;
         
-        if($logged_in_user->user_key)
-            $flag = true;
+        // if($logged_in_user->user_key)
+        //     $flag = true;
 
-        if(!$flag)
-            abort(403, 'Unuathorized Access');
-        else
+        // if(!$flag)
+        //     abort(403, 'Unuathorized Access');
+        // else
             return $next($request);
     }
 }
