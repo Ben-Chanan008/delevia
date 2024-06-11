@@ -27,7 +27,7 @@ Artisan::command('make:view {name} {--route=}', function(string $name) {
     $view_appendables = '
         <x-base>
             <x-navbar />
-        </x-base/>
+        </x-base>
     ';
     fwrite($view_create, $view_appendables);
     fclose($view_create);

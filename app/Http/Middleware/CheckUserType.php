@@ -67,7 +67,10 @@ class CheckUserType
 
                             } else{
                                 if($parameters['job']){
-                                    $jobs = Jobs::where(['user_id' => Auth::id()])->get();
+                                    if(Auth::user()->user_key)
+                                        $jobs = Jobs::where(['user_id' => Auth::id()])->get();
+                                    else
+                                        $jobs = Jobs::all();    
                                     foreach ($jobs as $job){
                                         $route_val1 = route($route->route, [$parameters['user'] ?? null, 'job' => $job->id]);
                                         $routes[] = $route_val1;

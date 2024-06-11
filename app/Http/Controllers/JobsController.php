@@ -21,7 +21,7 @@ class JobsController extends Controller
 
     public function seeker()
     {
-        return view('jobs.seeker.index');
+        return view('jobs.seeker.index', ['jobs' => Jobs::latest()->paginate(10)]);
     }
 
     public function giver()
@@ -186,5 +186,9 @@ class JobsController extends Controller
             $profile = GiverProfile::where(['giver_id' => $user->id])->get()->first();
 
         return view('partials.profile', ['profile' => $profile]);
+    }
+
+    public function apply_for_job_view(Request $request, Jobs $job){
+        return view('jobs.seeker.apply-job', ['job' => $job]);
     }
 }

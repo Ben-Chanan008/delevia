@@ -32,6 +32,7 @@ Route::controller(JobsController::class)->group(function () {
         Route::prefix('jobs')->group(function () {
             Route::get('/seeker', 'seeker')->name('jobs.seeker')->middleware('auth');
             Route::get('/giver','giver')->name('jobs.giver')->middleware('auth');
+          
             Route::middleware([JobsAuthentication::class])->group(function () {
                 Route::get('/giver/{user}/create-company','show_create_company')->name('jobs.show-create-company')->middleware('auth');
                 Route::post('/giver/{user}/create-company','create_company')->name('jobs.create-company')->middleware('auth');
@@ -44,6 +45,8 @@ Route::controller(JobsController::class)->group(function () {
                 Route::get('/giver/{user}/delete/{job}', 'delete_job')->name('jobs.delete')->middleware('auth');
                 Route::get('/giver/{user}/companies', 'view_companies')->name('jobs.view-companies')->middleware('auth');
             });
+            
+            Route::get('/seeker/{job}/apply', 'apply_for_job_view')->name('jobs.apply')->middleware('auth');
         });
     });
 });
