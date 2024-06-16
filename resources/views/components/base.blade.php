@@ -15,6 +15,11 @@
     @stack('styles')
 
     <link rel="icon" type="image/x-icon" href="{{asset('meta/favicon.ico')}}">
+
+    <link rel="manifest" href="{{asset('manifest.json')}}" />
+    <link rel="apple-touch-icon" href="{{asset('meta/android-chrome-192x192.png')}}" />
+
+    <meta name="apple-mobile-web-app-status-bar" content="#fff"/>
 </head>
 <body {{$attributes->merge(['class' => 'overflow-x-hidden vw-100'])}}>
     {{$slot}}
@@ -24,5 +29,6 @@
 
     @stack('scripts')
     <script defer src="{{asset('assets/js/main.js')}}"></script>
+    <script defer src="{{asset('assets/js/app.js')}}"></script>
 </body>
 </html>

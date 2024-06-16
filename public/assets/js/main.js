@@ -1,3 +1,4 @@
+const host = "https://deleviapp.000webhostapp.com";
 const msgShow = ({ message, type, mode, duration, redirect }) => {
     const msg = new Msg(".msg-alerts");
 
@@ -10,8 +11,9 @@ const msgShow = ({ message, type, mode, duration, redirect }) => {
 
     setTimeout(() => {
         if (redirect) {
-            if (redirect === "reload") location.reload();
-            else location.href = redirect;
+            if (redirect === "reload") {
+                location.reload();
+            } else location.href = redirect;
         }
     }, duration ?? 5000);
 };
@@ -76,15 +78,15 @@ if (applicantCard)
                 url = new URL(window.location.href),
                 loggedInUser = e.currentTarget.getAttribute("user_id"),
                 target = e.target,
-                ROUTE = `http://localhost:8000/jobs/giver/${jobId}/applicants`;
+                ROUTE = `${host}/jobs/giver/${jobId}/applicants`;
 
             if (url.pathname.includes("/jobs/seeker")) {
-                ROUTE = `http://localhost:8000/jobs/seeker/${jobId}/apply`;
+                ROUTE = `${host}/jobs/seeker/${jobId}/apply`;
             } else if (target.tagName === "BUTTON") {
                 return;
             }
             if (target.tagName === "A") {
-                ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/edit/${jobId}`;
+                ROUTE = `${host}/jobs/giver/${loggedInUser}/edit/${jobId}`;
                 location.href = ROUTE;
             }
 
@@ -100,7 +102,7 @@ if (deleteBtn) {
         btn.addEventListener("click", (e) => {
             let loggedInUser = btn.getAttribute("user_id"),
                 jobId = btn.getAttribute("job_id"),
-                ROUTE = `http://localhost:8000/jobs/giver/${loggedInUser}/delete/${jobId}`;
+                ROUTE = `${host}/jobs/giver/${loggedInUser}/delete/${jobId}`;
 
             deleteBtn.addEventListener("click", (e) => {
                 fetch(ROUTE)
