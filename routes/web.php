@@ -4,6 +4,7 @@ use App\Http\Controllers\JobsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckUserType;
 use App\Http\Middleware\JobsAuthentication;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('link-storage', function () {
+    Artisan::call('storage:link');
+});
 
 Route::controller(UserController::class)->group(function () {
     Route::prefix('user')->group(function () {

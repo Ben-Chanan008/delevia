@@ -66,7 +66,7 @@
         </div>
     </div>
     @push('scripts')
-        <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
+        <script src="{{asset('assets/plugins/message-alert/src/main.js')}}"></script>
         <script src="{{asset('assets/js/step.js')}}"></script>
         <script>
             const step = new Step('#register-form', ['btn', 'post-job'], 'jobs/giver/{{Auth::id()}}/store', true);

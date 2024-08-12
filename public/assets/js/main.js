@@ -1,4 +1,4 @@
-const host = "https://deleviapp.000webhostapp.com";
+const host = "https://deleviapp.000.pe";
 const msgShow = ({ message, type, mode, duration, redirect }) => {
     const msg = new Msg(".msg-alerts");
 
@@ -7,15 +7,8 @@ const msgShow = ({ message, type, mode, duration, redirect }) => {
         msg: message,
         mode: mode ?? "light",
         duration,
+        redirect
     });
-
-    setTimeout(() => {
-        if (redirect) {
-            if (redirect === "reload") {
-                location.reload();
-            } else location.href = redirect;
-        }
-    }, duration ?? 5000);
 };
 
 const owl = document.querySelector(".owl-carousel");

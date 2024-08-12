@@ -27,7 +27,7 @@
         </div>
     </div>
     @push('scripts')
-        <script src="{{asset('assets/plugins/message-alert/dist/main.js')}}"></script>
+        <script src="{{asset('assets/plugins/message-alert/src/main.js')}}"></script>
         <script src="{{asset('assets/js/step.js')}}"></script>
         <script defer>
             const step = new Step('#upd-form', ['btn', 'p-3', 'login'], 'forgot-password');

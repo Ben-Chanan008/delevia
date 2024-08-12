@@ -7,7 +7,7 @@ class Step {
     currentStep;
     inputs;
     errorBag;
-    host = "https://deleviapp.000webhostapp.com";
+    host = "http://delevia.000.pe";
     submitBtn;
     constructor(form, btnClasses, action, multipleStep = false) {
         this.selectedForm = document.querySelector(`${form}`);

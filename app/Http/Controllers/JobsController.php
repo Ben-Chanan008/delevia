@@ -27,11 +27,8 @@ class JobsController extends Controller
     public function giver()
     {
         $jobs = Jobs::onlyTrashed()->where(['user_id' => Auth::id()])->get();
-        if($jobs->isEmpty())
-            $trashed = false;
-        else{
-            $trashed = true;
-        }
+        $trashed = (bool)$jobs->isEmpty();
+
         return view('jobs.giver.index', ['jobs' => Jobs::where(['user_id' => Auth::id()])->latest()->filter(request(['search']))->paginate(10), 'trashed' => $trashed]);
     }
 

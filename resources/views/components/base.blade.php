@@ -25,7 +25,7 @@
     {{$slot}}
 
     <script defer src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.js')}}"></script>
-    <script defer src="{{asset('assets/plugins/fontawesome/js/all.js')}}"></script>
+    {{-- <script defer src="{{asset('assets/plugins/fontawesome/js/all.js')}}"></script> --}}
 
     @stack('scripts')
     <script defer src="{{asset('assets/js/main.js')}}"></script>
